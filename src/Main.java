@@ -11,6 +11,18 @@ public class Main {
 		
 		System.out.println(documentos.size());
 		
+		int o = 0;
+		for (Documento d : documentos) {
+			
+
+				System.out.println(d.getPaperNumber() + " -> " + d.getAbstract());
+
+			o++;
+		}
+		
+		System.out.println(o);
+
+		
 	}
 	
 	

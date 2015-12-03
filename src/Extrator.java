@@ -17,7 +17,7 @@ public class Extrator {
 		int c=0;
 		while(i < 80){
 			try {
-				stream = new FileInputStream("/home/daniel/Área de Trabalho/cfc/cf" + i);
+				stream = new FileInputStream("assets/cfc/cf" + i);
 				InputStreamReader reader = new InputStreamReader(stream);
 				BufferedReader br = new BufferedReader(reader);
 				String linha = br.readLine();
@@ -28,48 +28,42 @@ public class Extrator {
 					Documento doc = new Documento();
 
 					if(linha != null && linha.startsWith("PN")){
-						while (linha.startsWith("RN")) {
-							linha = linha.replace("PN ", "");
-							linha = linha.trim();
-							System.out.println(linha);
-							doc.setPaperNumber(linha);						
-							
-							linha = br.readLine();
-						}
+						linha = linha.replace("PN ", "");
+						linha = linha.trim();
+				//		System.out.println(linha);
+						doc.setPaperNumber(linha);						
+						
+						linha = br.readLine();
 					}
 					else if(scape.startsWith("PN")){
 						scape = scape.replace("PN ", "");
 						scape = scape.trim();
-						System.out.println(scape);
+				//		System.out.println(scape);
 						doc.setPaperNumber(scape);	
 					}
 					
 					if(linha != null && linha.startsWith("RN")){
-						while (!linha.startsWith("AN")) {
-							linha = linha.replace("RN ", "");
-							linha = linha.trim();
-							System.out.println(linha);
-							doc.setRecordNumber(linha);
-							doc.setYear(ano);
-						
-							linha = br.readLine();
-						}
+						linha = linha.replace("RN ", "");
+						linha = linha.trim();
+				//		System.out.println(linha);
+						doc.setRecordNumber(linha);
+						doc.setYear(ano);
+					
+						linha = br.readLine();
 					}
 					if(linha != null && linha.startsWith("AN")){
-						while (!linha.startsWith("AU")) {
-							linha = linha.replace("AN ", "");
-							linha = linha.trim();
-							System.out.println(linha);
-							doc.setMedlineAcessionNumber(linha);
-						
-							linha = br.readLine();
-						}
+						linha = linha.replace("AN ", "");
+						linha = linha.trim();
+				//		System.out.println(linha);
+						doc.setMedlineAcessionNumber(linha);
+					
+						linha = br.readLine();
 					}
 					if(linha != null && linha.startsWith("AU")){
 						ArrayList<String> authors = new ArrayList<>();
 						String aux = "";
 						
-						while (!linha.startsWith("TI")) {
+						while (linha.startsWith("AU") || linha.startsWith(" ")) {
 							linha = linha.replace("AU ", "");
 							linha = linha.trim();
 							
@@ -78,7 +72,7 @@ public class Extrator {
 							linha = br.readLine();
 						}
 
-						System.out.println(aux);
+			//			System.out.println(aux);
 						String a[] = aux.split("  ");
 						for (String string : a) {
 							authors.add(string);
@@ -88,7 +82,7 @@ public class Extrator {
 					if(linha != null && linha.startsWith("TI")){
 						String aux = "";
 						
-						while (!linha.startsWith("SO")) {
+						while (linha.startsWith("TI") || linha.startsWith(" ")) {
 							linha = linha.replace("TI ", "");
 							linha = linha.trim();
 						
@@ -97,15 +91,15 @@ public class Extrator {
 							linha = br.readLine();
 						}
 						
-						System.out.println(aux);
+				//		System.out.println(aux);
 						doc.setTitle(aux);
 						
 					}
 					if(linha != null && linha.startsWith("SO")){
-						while (depoisSO(linha)) {
+						while (linha.startsWith("SO") || linha.startsWith(" ")) {
 							linha = linha.replace("SO ", "");
 							linha = linha.trim();
-							System.out.println(linha);
+				//			System.out.println(linha);
 							doc.setSource(linha);
 						
 							linha = br.readLine();
@@ -115,7 +109,7 @@ public class Extrator {
 						ArrayList<String> major = new ArrayList<>();
 						String aux = "";
 						
-						while (depoisMJ(linha)) {
+						while (linha.startsWith("MJ") || linha.startsWith(" ")) {
 							linha = linha.replace("MJ ", "");
 							linha = linha.trim();
 							
@@ -125,7 +119,7 @@ public class Extrator {
 						}
 						
 
-						System.out.println(aux);
+			//			System.out.println(aux);
 						String a[] = aux.split("  ");
 						for (String string : a) {
 							major.add(string);
@@ -136,7 +130,7 @@ public class Extrator {
 						ArrayList<String> minor = new ArrayList<>();
 						String aux = "";
 						
-						while (!linha.startsWith("AB") && !linha.startsWith("EX")) {
+						while (linha.startsWith("MN") || linha.startsWith(" ")) {
 							linha = linha.replace("MN ", "");
 							linha = linha.trim();
 
@@ -145,7 +139,7 @@ public class Extrator {
 							linha = br.readLine();
 						}
 						
-						System.out.println(aux);
+			//			System.out.println(aux);
 						String a[] = aux.split("  ");
 						for (String string : a) {
 							minor.add(string);
@@ -155,7 +149,7 @@ public class Extrator {
 					if(linha != null && linha.startsWith("AB") || linha.startsWith("EX")){
 						String aux = "";
 						
-						while (depoisAB(linha)) {
+						while (linha.startsWith("AB") || linha.startsWith("EX") || linha.startsWith(" ")) {
 							linha = linha.replace("AB ", "");
 							linha = linha.replace("EX ", "");
 							linha = linha.trim();
@@ -165,16 +159,20 @@ public class Extrator {
 							linha = br.readLine();
 						}
 
-						System.out.println(aux);
+			//			System.out.println(aux);
 						doc.setAbstract(aux);
 					}
+					else if(!linha.startsWith(" ")){
+						System.out.println(doc.getPaperNumber() +" --- "+linha);
+					}
+					
 					if(linha != null && linha.startsWith("RF")){
 						ArrayList<String> rf = new ArrayList<>();
 						
-						while (depoisRF(linha)) {
+						while (linha.startsWith("RF") || linha.startsWith(" ")) {
 							linha = linha.replace("RF ", "");
 							linha = linha.trim();
-							System.out.println(linha);
+			//				System.out.println(linha);
 							rf.add(linha);
 							
 							linha = br.readLine();
@@ -187,7 +185,7 @@ public class Extrator {
 						while (linha != null && !linha.isEmpty()) {
 							linha = linha.replace("CT ", "");
 							linha = linha.trim();
-							System.out.println(linha);
+			//				System.out.println(linha);
 							ct.add(linha);
 						
 							linha = br.readLine();
@@ -218,58 +216,6 @@ public class Extrator {
 		System.out.println(c);
 		
 		return documentos;
-	}
-	
-	private static boolean depoisRF(String line){
-		if(line != null && !line.startsWith("PN") && !line.startsWith("RN") && 
-				!line.startsWith("AN") && !line.startsWith("AU") && !line.startsWith("TI") && 
-				!line.startsWith("SO") && !line.startsWith("MJ") && !line.startsWith("MN") && 
-				!line.startsWith("EX") && !line.startsWith("AB") && !line.startsWith("CT")){
-			
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	private static boolean depoisSO(String line){
-		if(line != null && !line.startsWith("PN") && !line.startsWith("RN") && 
-				!line.startsWith("AN") && !line.startsWith("AU") && !line.startsWith("TI") && 
-				!line.startsWith("RF") && !line.startsWith("MJ") && !line.startsWith("MN") && 
-				!line.startsWith("EX") && !line.startsWith("AB") && !line.startsWith("CT")){
-			
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	private static boolean depoisMJ(String line){
-		if(line != null && !line.startsWith("PN") && !line.startsWith("RN") && 
-				!line.startsWith("AN") && !line.startsWith("AU") && !line.startsWith("TI") && 
-				!line.startsWith("RF") && !line.startsWith("SO") && !line.startsWith("MN") && 
-				!line.startsWith("EX") && !line.startsWith("AB") && !line.startsWith("CT")){
-			
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	private static boolean depoisAB(String line){
-		if(line != null && !line.startsWith("PN") && !line.startsWith("RN") && 
-				!line.startsWith("AN") && !line.startsWith("AU") && !line.startsWith("TI") && 
-				!line.startsWith("RF") && !line.startsWith("SO") && !line.startsWith("MN") && 
-				!line.startsWith("EX") && !line.startsWith("MJ") && !line.startsWith("CT")){
-			
-			return true;
-		}
-		else{
-			return false;
-		}
 	}
 	
 	
