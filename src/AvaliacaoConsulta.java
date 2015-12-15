@@ -3,7 +3,7 @@
 public class AvaliacaoConsulta {
 
 	private String QueryNumber;
-	private String RecordNumber;
+	private int RecordNumber;
 	private int avaliacoes[];
 	
 	public String getQueryNumber() {
@@ -12,10 +12,10 @@ public class AvaliacaoConsulta {
 	public void setQueryNumber(String qN) {
 		QueryNumber = qN;
 	}
-	public String getRecordNumber() {
+	public int getRecordNumber() {
 		return RecordNumber;
 	}
-	public void setRecornNumber(String pN) {
+	public void setRecornNumber(int pN) {
 		RecordNumber = pN;
 	}
 	public int[] getAvaliacoes() {

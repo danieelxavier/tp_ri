@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Documento {
 
 	private String paperNumber;
-	private String recordNumber;
+	private int recordNumber;
 	private String medlineAcessionNumber;
 	private ArrayList<String> Authors;
 	private String title;
@@ -21,10 +21,10 @@ public class Documento {
 	public void setPaperNumber(String paperNumber) {
 		this.paperNumber = paperNumber;
 	}
-	public String getRecordNumber() {
+	public int getRecordNumber() {
 		return recordNumber;
 	}
-	public void setRecordNumber(String recordNumber) {
+	public void setRecordNumber(int recordNumber) {
 		this.recordNumber = recordNumber;
 	}
 	public String getMedlineAcessionNumber() {

@@ -31,6 +31,7 @@ public class Extrator {
 					if(linha != null && linha.startsWith("PN")){
 						linha = linha.replace("PN ", "");
 						linha = linha.trim();
+						linha = linha.toUpperCase();  
 				//		System.out.println(linha);
 						doc.setPaperNumber(linha);						
 						
@@ -39,6 +40,7 @@ public class Extrator {
 					else if(scape.startsWith("PN")){
 						scape = scape.replace("PN ", "");
 						scape = scape.trim();
+						linha = linha.toUpperCase();  
 				//		System.out.println(scape);
 						doc.setPaperNumber(scape);	
 					}
@@ -46,8 +48,9 @@ public class Extrator {
 					if(linha != null && linha.startsWith("RN")){
 						linha = linha.replace("RN ", "");
 						linha = linha.trim();
+						linha = linha.toUpperCase();  
 				//		System.out.println(linha);
-						doc.setRecordNumber(linha);
+						doc.setRecordNumber(Integer.parseInt(linha));
 						doc.setYear(ano);
 					
 						linha = br.readLine();
@@ -55,6 +58,7 @@ public class Extrator {
 					if(linha != null && linha.startsWith("AN")){
 						linha = linha.replace("AN ", "");
 						linha = linha.trim();
+						linha = linha.toUpperCase();  
 				//		System.out.println(linha);
 						doc.setMedlineAcessionNumber(linha);
 					
@@ -67,6 +71,7 @@ public class Extrator {
 						while (linha.startsWith("AU") || linha.startsWith(" ")) {
 							linha = linha.replace("AU ", "");
 							linha = linha.trim();
+							linha = linha.toUpperCase();  
 							
 							aux = aux + linha + "  ";
 							
@@ -86,6 +91,7 @@ public class Extrator {
 						while (linha.startsWith("TI") || linha.startsWith(" ")) {
 							linha = linha.replace("TI ", "");
 							linha = linha.trim();
+							linha = linha.toUpperCase();  
 						
 							aux = aux + linha + " ";
 							
@@ -100,6 +106,7 @@ public class Extrator {
 						while (linha.startsWith("SO") || linha.startsWith(" ")) {
 							linha = linha.replace("SO ", "");
 							linha = linha.trim();
+							linha = linha.toUpperCase();  
 				//			System.out.println(linha);
 							doc.setSource(linha);
 						
@@ -113,6 +120,7 @@ public class Extrator {
 						while (linha.startsWith("MJ") || linha.startsWith(" ")) {
 							linha = linha.replace("MJ ", "");
 							linha = linha.trim();
+							linha = linha.toUpperCase();  
 							
 							aux = aux + linha + "  ";
 							
@@ -134,6 +142,7 @@ public class Extrator {
 						while (linha.startsWith("MN") || linha.startsWith(" ")) {
 							linha = linha.replace("MN ", "");
 							linha = linha.trim();
+							linha = linha.toUpperCase();  
 
 							aux = aux + linha + "  ";
 						
@@ -154,6 +163,7 @@ public class Extrator {
 							linha = linha.replace("AB ", "");
 							linha = linha.replace("EX ", "");
 							linha = linha.trim();
+							linha = linha.toUpperCase();  
 						
 							aux = aux + linha + " ";
 							
@@ -173,6 +183,7 @@ public class Extrator {
 						while (linha.startsWith("RF") || linha.startsWith(" ")) {
 							linha = linha.replace("RF ", "");
 							linha = linha.trim();
+							linha = linha.toUpperCase();  
 			//				System.out.println(linha);
 							rf.add(linha);
 							
@@ -186,6 +197,7 @@ public class Extrator {
 						while (linha != null && !linha.isEmpty()) {
 							linha = linha.replace("CT ", "");
 							linha = linha.trim();
+							linha = linha.toUpperCase();  
 			//				System.out.println(linha);
 							ct.add(linha);
 						
@@ -238,6 +250,7 @@ public class Extrator {
 				if(linha != null && linha.startsWith("QN")){
 					linha = linha.replace("QN ", "");
 					linha = linha.trim();
+					linha = linha.toUpperCase();  
 			//		System.out.println(linha);
 					consult.setQueryNumber(linha);
 				
@@ -250,6 +263,7 @@ public class Extrator {
 					while (linha.startsWith("QU") || linha.startsWith(" ")) {
 						linha = linha.replace("QU ", "");
 						linha = linha.trim();
+						linha = linha.toUpperCase();  
 					
 						aux = aux + linha + " ";
 						
@@ -263,8 +277,9 @@ public class Extrator {
 				if(linha != null && linha.startsWith("NR")){
 					linha = linha.replace("NR ", "");
 					linha = linha.trim();
+					linha = linha.toUpperCase();  
 			//		System.out.println(linha);
-					consult.setNR(linha);
+					consult.setRecordNumber(Integer.parseInt(linha));
 					
 					linha = br.readLine();
 				}
@@ -279,6 +294,7 @@ public class Extrator {
 						linha = linha.replace("  ", " ");
 						linha = linha.replace("  ", " ");
 						linha = linha.trim();
+						linha = linha.toUpperCase();  
 			
 						String array[] = linha.split(" ");
 						
@@ -294,7 +310,7 @@ public class Extrator {
 								avaliacoes[j] = (int) a[j];
 							}
 							
-							ac.setRecornNumber(array[i]);
+							ac.setRecornNumber(Integer.parseInt(array[i]));
 							ac.setQueryNumber(consult.getQueryNumber());
 							ac.setAvaliacoes(avaliacoes);
 							

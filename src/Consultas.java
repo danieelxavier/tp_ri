@@ -4,7 +4,7 @@ public class Consultas {
 	
 	private String QueryNumber;
 	private String Query;
-	private String NR;
+	private int RecordNumber;
 	private ArrayList<AvaliacaoConsulta> avaliacoes;
 	public String getQueryNumber() {
 		return QueryNumber;
@@ -18,17 +18,18 @@ public class Consultas {
 	public void setQuery(String query) {
 		Query = query;
 	}
-	public String getNR() {
-		return NR;
-	}
-	public void setNR(String nR) {
-		NR = nR;
-	}
+
 	public ArrayList<AvaliacaoConsulta> getAvaliacoes() {
 		return avaliacoes;
 	}
 	public void setAvaliacoes(ArrayList<AvaliacaoConsulta> avaliacoes) {
 		this.avaliacoes = avaliacoes;
+	}
+	public int getRecordNumber() {
+		return RecordNumber;
+	}
+	public void setRecordNumber(int recordNumber) {
+		RecordNumber = recordNumber;
 	}
 
 
