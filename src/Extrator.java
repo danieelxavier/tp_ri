@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Extrator {
 
 	public static ArrayList<Documento> documentos = new ArrayList<>();
+	public static ArrayList<Consultas> consultas = new ArrayList<>();
 	
 	public static ArrayList<Documento> extrairDocumentos(){
 		
@@ -163,7 +164,7 @@ public class Extrator {
 						doc.setAbstract(aux);
 					}
 					else if(!linha.startsWith(" ")){
-						System.out.println(doc.getPaperNumber() +" --- "+linha);
+				//		System.out.println(doc.getPaperNumber() +" --- "+linha);
 					}
 					
 					if(linha != null && linha.startsWith("RF")){
@@ -198,7 +199,6 @@ public class Extrator {
 					else
 						c++;
 					
-					//System.out.println(" FIM - "+linha);
 					scape = linha;
 					linha = br.readLine();
 				}
@@ -219,4 +219,118 @@ public class Extrator {
 	}
 	
 	
+	
+	
+	public static ArrayList<Consultas> extrairConsultas(){
+		
+		FileInputStream stream;
+
+		try {
+			stream = new FileInputStream("assets/cfc/cfquery");
+			InputStreamReader reader = new InputStreamReader(stream);
+			BufferedReader br = new BufferedReader(reader);
+			String linha = br.readLine();
+
+			while (linha != null){
+				
+				Consultas consult = new Consultas();
+				
+				if(linha != null && linha.startsWith("QN")){
+					linha = linha.replace("QN ", "");
+					linha = linha.trim();
+			//		System.out.println(linha);
+					consult.setQueryNumber(linha);
+				
+					linha = br.readLine();
+				}
+				
+				if(linha != null && linha.startsWith("QU")){
+					String aux = "";
+					
+					while (linha.startsWith("QU") || linha.startsWith(" ")) {
+						linha = linha.replace("QU ", "");
+						linha = linha.trim();
+					
+						aux = aux + linha + " ";
+						
+						linha = br.readLine();
+					}
+
+		//			System.out.println(consult.getQueryNumber() + " - " + aux);
+					consult.setQuery(aux);
+				}
+				
+				if(linha != null && linha.startsWith("NR")){
+					linha = linha.replace("NR ", "");
+					linha = linha.trim();
+			//		System.out.println(linha);
+					consult.setNR(linha);
+					
+					linha = br.readLine();
+				}
+				
+				if(linha != null && linha.startsWith("RD")){
+					ArrayList<AvaliacaoConsulta> arrayAvaliacoes = new ArrayList<>();
+					
+					while(linha != null && !linha.isEmpty()){
+						linha = linha.replace("RD ", "");
+						linha = linha.replace("  ", " ");
+						linha = linha.replace("  ", " ");
+						linha = linha.replace("  ", " ");
+						linha = linha.replace("  ", " ");
+						linha = linha.trim();
+			
+						String array[] = linha.split(" ");
+						
+						for (int i = 0; i < array.length; i = i + 2) {
+							
+							AvaliacaoConsulta ac = new AvaliacaoConsulta();
+							
+							char[] a = array[i+1].toCharArray();
+							int[] avaliacoes = new int[4];
+							
+
+							for (int j = 0; j < a.length ; j++) {
+								avaliacoes[j] = (int) a[j];
+							}
+							
+							ac.setRecornNumber(array[i]);
+							ac.setQueryNumber(consult.getQueryNumber());
+							ac.setAvaliacoes(avaliacoes);
+							
+							arrayAvaliacoes.add(ac);
+
+			//				System.out.println(array[i] + " - " + array[i+1]);
+						}
+						
+						linha = br.readLine();
+						linha = linha.trim();
+					}
+					
+					consult.setAvaliacoes(arrayAvaliacoes);
+				}
+				
+
+				if(consult.getQueryNumber() != null)
+					consultas.add(consult);
+				else
+		//			System.out.println("FAIL");
+				
+				linha = br.readLine();
+				
+			}
+			
+
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return consultas;
+		
+	}
 }
