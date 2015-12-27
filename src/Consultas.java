@@ -2,14 +2,15 @@ import java.util.ArrayList;
 
 public class Consultas {
 	
-	private String QueryNumber;
+	private int QueryNumber;
 	private String Query;
-	private int RecordNumber;
+	private int NR;
 	private ArrayList<AvaliacaoConsulta> avaliacoes;
-	public String getQueryNumber() {
+			
+	public int getQueryNumber() {
 		return QueryNumber;
 	}
-	public void setQueryNumber(String queryNumber) {
+	public void setQueryNumber(int queryNumber) {
 		QueryNumber = queryNumber;
 	}
 	public String getQuery() {
@@ -25,13 +26,12 @@ public class Consultas {
 	public void setAvaliacoes(ArrayList<AvaliacaoConsulta> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
-	public int getRecordNumber() {
-		return RecordNumber;
+	public int getNR() {
+		return NR;
 	}
-	public void setRecordNumber(int recordNumber) {
-		RecordNumber = recordNumber;
+	public void setRecordNumber(int NR) {
+		this.NR = NR;
 	}
-
 
 	
 }

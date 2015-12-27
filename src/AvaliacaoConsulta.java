@@ -2,14 +2,14 @@
 
 public class AvaliacaoConsulta {
 
-	private String QueryNumber;
+	private int QueryNumber;
 	private int RecordNumber;
 	private int avaliacoes[];
 	
-	public String getQueryNumber() {
+	public int getQueryNumber() {
 		return QueryNumber;
 	}
-	public void setQueryNumber(String qN) {
+	public void setQueryNumber(int qN) {
 		QueryNumber = qN;
 	}
 	public int getRecordNumber() {

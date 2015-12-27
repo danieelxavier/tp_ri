@@ -4,14 +4,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class Extrator {
 
-	public static ArrayList<Documento> documentos = new ArrayList<>();
-	public static ArrayList<Consultas> consultas = new ArrayList<>();
 	
 	public static ArrayList<Documento> extrairDocumentos(){
 		
+		ArrayList<Documento> documentos = new ArrayList<>();
 		FileInputStream stream;
 		int i = 74;
 		int ano = 1974;
@@ -225,7 +226,7 @@ public class Extrator {
 			ano++;
 		}
 		
-		System.out.println(c);
+	//	System.out.println(c);
 		
 		return documentos;
 	}
@@ -235,6 +236,7 @@ public class Extrator {
 	
 	public static ArrayList<Consultas> extrairConsultas(){
 		
+		ArrayList<Consultas> consultas = new ArrayList<>();
 		FileInputStream stream;
 
 		try {
@@ -252,7 +254,7 @@ public class Extrator {
 					linha = linha.trim();
 					linha = linha.toUpperCase();  
 			//		System.out.println(linha);
-					consult.setQueryNumber(linha);
+					consult.setQueryNumber(Integer.parseInt(linha));
 				
 					linha = br.readLine();
 				}
@@ -327,7 +329,7 @@ public class Extrator {
 				}
 				
 
-				if(consult.getQueryNumber() != null)
+				if(consult.getQuery() != null)
 					consultas.add(consult);
 				else
 		//			System.out.println("FAIL");
@@ -349,4 +351,218 @@ public class Extrator {
 		return consultas;
 		
 	}
+	
+	
+	public static HashMap<String, ArrayList<Frequencia>> getTFDocumentos(ArrayList<Documento> documentos){
+		
+		HashMap<String, ArrayList<Frequencia>> hashFrequencias = new HashMap<>();
+		
+		for (Documento d : documentos) {
+			
+			String aux;
+			
+			
+		// PEGA OS TERMOS DO TITULO---------------------------
+			aux = d.getTitle();
+			String[] parts = aux.split("[\\W]");
+			
+			
+			for (int i = 0; i < parts.length; i++) {
+				
+				if(!parts[i].equals("")){
+					
+					if (hashFrequencias.get(parts[i]) == null){
+						
+						ArrayList<Frequencia> af = iniciaFrequenciasDocumentos(documentos);
+						hashFrequencias.put(parts[i], af);
+						hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+					}
+					else if(hashFrequencias.get(parts[i]) != null){
+						hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+						
+					}
+					
+				}
+			}
+			
+			
+		// PEGA OS TERMOS DAS PALAVRAS CHAVE---------------------------
+			
+			ArrayList<String> auxMJ = d.getMajorSubjects();
+			
+			if(auxMJ != null){
+				for (String string : auxMJ) {
+					
+					parts = string.split("[\\W]");
+					
+
+					for (int i = 0; i < parts.length; i++) {
+						
+						if(!parts[i].equals("")){
+							
+							if (hashFrequencias.get(parts[i]) == null){
+								
+								ArrayList<Frequencia> af = iniciaFrequenciasDocumentos(documentos);
+								hashFrequencias.put(parts[i], af);
+								hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+							}
+							else if(hashFrequencias.get(parts[i]) != null){
+								hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+//								System.out.println(hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).getDocumento()+" - " +
+//										hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).getFrequencia()
+//										+" --- "+parts[i] );
+							}
+							
+						}
+					
+					}
+				}
+			}
+			
+			
+			
+			
+		// PEGA OS TERMOS DO ABSTRACT---------------------------
+			aux = d.getAbstract();
+			parts = aux.split("[\\W]");
+			
+			
+			for (int i = 0; i < parts.length; i++) {
+				
+				if(!parts[i].equals("")){
+					
+					if (hashFrequencias.get(parts[i]) == null){
+						
+						ArrayList<Frequencia> af = iniciaFrequenciasDocumentos(documentos);
+						hashFrequencias.put(parts[i], af);
+						hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+					}
+					else{
+						hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+	
+//						System.out.println(hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).getDocumento()+" - " +
+//								hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).getFrequencia()
+//								+" --- "+parts[i] );
+					}
+				}
+			}			
+			
+		}
+		
+		
+		return hashFrequencias;
+		
+	}
+	
+	public static HashMap<String, ArrayList<Frequencia>> getTFConsultas(ArrayList<Consultas> consultas){
+		
+		HashMap<String, ArrayList<Frequencia>> hashFrequencias = new HashMap<>();
+		
+		for (Consultas c : consultas) {
+			
+			String aux;
+			
+			
+			aux = c.getQuery();
+			String[] parts = aux.split("[\\W]");
+			
+			
+			for (int i = 0; i < parts.length; i++) {
+				
+				if(!parts[i].equals("")){
+					
+					if (hashFrequencias.get(parts[i]) == null){
+						
+						ArrayList<Frequencia> af = iniciaFrequenciasConsultas(consultas);
+						hashFrequencias.put(parts[i], af);
+						hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).incrementaFrequencia();
+					}
+					else if(hashFrequencias.get(parts[i]) != null){
+						hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).incrementaFrequencia();
+						
+//						System.out.println(hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).getDocumento()+" - " +
+//								hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).getFrequencia()
+//								+" --- "+parts[i] );				
+					}
+					
+				}
+			}
+			
+		}
+		
+		return hashFrequencias;
+		
+	}
+	
+	
+	
+	private static ArrayList<Frequencia> iniciaFrequenciasDocumentos(ArrayList<Documento> documentos){
+		
+		ArrayList<Frequencia> af = new ArrayList<>();
+		
+		for (Documento d : documentos) {
+					
+			Frequencia f = new Frequencia();
+			
+			f.setDocumento(d.getRecordNumber());
+			f.setFrequencia(0);
+			
+			af.add(f);
+		}
+		
+		return af;
+	}
+	
+	private static ArrayList<Frequencia> iniciaFrequenciasConsultas(ArrayList<Consultas> consultas){
+			
+		ArrayList<Frequencia> af = new ArrayList<>();
+		
+		for (Consultas c : consultas) {
+					
+			Frequencia f = new Frequencia();
+			
+			f.setDocumento(c.getQueryNumber());
+			f.setFrequencia(0);
+			
+			af.add(f);
+		}
+		
+		return af;
+	}
+	
+	public static HashMap<String, Double> calculaIDF(HashMap<String, ArrayList<Frequencia>> hashFrequencias, int numero_de_documentos){
+		
+		HashMap<String, Double> hashIDF = new HashMap<>();
+		
+	
+		Iterator it = hashFrequencias.entrySet().iterator();
+	    while (it.hasNext()) {
+	        HashMap.Entry pairs = (HashMap.Entry)it.next();
+   
+	        ArrayList<Frequencia> fr = (ArrayList<Frequencia>) pairs.getValue();
+	        
+//	        System.out.println(pairs.getKey() + " -- " + Math.log10(numero_de_documentos/size(fr)));
+	        
+	        Double idf = Math.log10(numero_de_documentos/size(fr));
+	        
+	        hashIDF.put((String) pairs.getKey(), idf);
+
+	        
+	        it.remove(); // avoids a ConcurrentModificationException
+	    }
+		
+	    return hashIDF;
+	}
+	
+	public static int size(ArrayList<Frequencia> arrayFrequencias){
+		int c = 0;
+		
+		for (Frequencia frequencia : arrayFrequencias) {
+			if(frequencia.getFrequencia() > 0)
+				c++;
+		}
+		
+		return c;
+	}
+	
 }

@@ -1,8 +1,8 @@
 
 public class Frequencia {
 
-	private int documento;
-	private int frequencia;
+	private int documento; //Recorn Number ou Query Number
+	private int frequencia; //TF
 	
 	public void incrementaFrequencia(){
 		this.frequencia++;
