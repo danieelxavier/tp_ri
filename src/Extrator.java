@@ -234,9 +234,9 @@ public class Extrator {
 	
 	
 	
-	public static ArrayList<Consultas> extrairConsultas(){
+	public static ArrayList<Consulta> extrairConsultas(){
 		
-		ArrayList<Consultas> consultas = new ArrayList<>();
+		ArrayList<Consulta> consultas = new ArrayList<>();
 		FileInputStream stream;
 
 		try {
@@ -247,7 +247,7 @@ public class Extrator {
 
 			while (linha != null){
 				
-				Consultas consult = new Consultas();
+				Consulta consult = new Consulta();
 				
 				if(linha != null && linha.startsWith("QN")){
 					linha = linha.replace("QN ", "");
@@ -353,9 +353,9 @@ public class Extrator {
 	}
 	
 	
-	public static HashMap<String, ArrayList<Frequencia>> getTFDocumentos(ArrayList<Documento> documentos){
+	public static HashMap<String, TermoDocumentos> getTFDocumentos(ArrayList<Documento> documentos){
 		
-		HashMap<String, ArrayList<Frequencia>> hashFrequencias = new HashMap<>();
+		HashMap<String, TermoDocumentos> hashTermos = new HashMap<>();
 		
 		for (Documento d : documentos) {
 			
@@ -371,14 +371,18 @@ public class Extrator {
 				
 				if(!parts[i].equals("")){
 					
-					if (hashFrequencias.get(parts[i]) == null){
+					if (hashTermos.get(parts[i]) == null){
 						
+						TermoDocumentos t = new TermoDocumentos();
 						ArrayList<Frequencia> af = iniciaFrequenciasDocumentos(documentos);
-						hashFrequencias.put(parts[i], af);
-						hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+						t.setFrequenciasDocumentos(af);
+						t.setTermo(parts[i]);
+						
+						hashTermos.put(parts[i], t);
+						hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
 					}
-					else if(hashFrequencias.get(parts[i]) != null){
-						hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+					else if(hashTermos.get(parts[i]) != null){
+						hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
 						
 					}
 					
@@ -400,16 +404,20 @@ public class Extrator {
 						
 						if(!parts[i].equals("")){
 							
-							if (hashFrequencias.get(parts[i]) == null){
+							if (hashTermos.get(parts[i]) == null){
 								
+								TermoDocumentos t = new TermoDocumentos();
 								ArrayList<Frequencia> af = iniciaFrequenciasDocumentos(documentos);
-								hashFrequencias.put(parts[i], af);
-								hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+								t.setFrequenciasDocumentos(af);
+								t.setTermo(parts[i]);
+								
+								hashTermos.put(parts[i], t);
+								hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
 							}
-							else if(hashFrequencias.get(parts[i]) != null){
-								hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
-//								System.out.println(hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).getDocumento()+" - " +
-//										hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).getFrequencia()
+							else if(hashTermos.get(parts[i]) != null){
+								hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
+//								System.out.println(hashFrequencias.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).getDocumento()+" - " +
+//										hashFrequencias.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).getFrequencia()
 //										+" --- "+parts[i] );
 							}
 							
@@ -431,17 +439,21 @@ public class Extrator {
 				
 				if(!parts[i].equals("")){
 					
-					if (hashFrequencias.get(parts[i]) == null){
+					if (hashTermos.get(parts[i]) == null){
 						
+						TermoDocumentos t = new TermoDocumentos();
 						ArrayList<Frequencia> af = iniciaFrequenciasDocumentos(documentos);
-						hashFrequencias.put(parts[i], af);
-						hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+						t.setFrequenciasDocumentos(af);
+						t.setTermo(parts[i]);
+						
+						hashTermos.put(parts[i], t);
+						hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
 					}
 					else{
-						hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).incrementaFrequencia();
+						hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
 	
-//						System.out.println(hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).getDocumento()+" - " +
-//								hashFrequencias.get(parts[i]).get(d.getRecordNumber()-1).getFrequencia()
+//						System.out.println(hashFrequencias.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).getDocumento()+" - " +
+//								hashFrequencias.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).getFrequencia()
 //								+" --- "+parts[i] );
 					}
 				}
@@ -449,48 +461,54 @@ public class Extrator {
 			
 		}
 		
-		
-		return hashFrequencias;
+
+		calculaIDF(hashTermos, documentos.size());
+		return hashTermos;
 		
 	}
 	
-	public static HashMap<String, ArrayList<Frequencia>> getTFConsultas(ArrayList<Consultas> consultas){
+	public static void getTFConsulta(Consulta consulta){
 		
-		HashMap<String, ArrayList<Frequencia>> hashFrequencias = new HashMap<>();
+		HashMap<String, TermoConsultas> hashTermosConsultas = new HashMap<>();
 		
-		for (Consultas c : consultas) {
+		
+		String aux;
+		
+		
+		aux = consulta.getQuery();
+		String[] parts = aux.split("[\\W]");
+		
+		
+		for (int i = 0; i < parts.length; i++) {
 			
-			String aux;
-			
-			
-			aux = c.getQuery();
-			String[] parts = aux.split("[\\W]");
-			
-			
-			for (int i = 0; i < parts.length; i++) {
+			if(!parts[i].equals("")){
 				
-				if(!parts[i].equals("")){
+				if (hashTermosConsultas.get(parts[i]) == null){
 					
-					if (hashFrequencias.get(parts[i]) == null){
-						
-						ArrayList<Frequencia> af = iniciaFrequenciasConsultas(consultas);
-						hashFrequencias.put(parts[i], af);
-						hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).incrementaFrequencia();
-					}
-					else if(hashFrequencias.get(parts[i]) != null){
-						hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).incrementaFrequencia();
-						
-//						System.out.println(hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).getDocumento()+" - " +
-//								hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).getFrequencia()
-//								+" --- "+parts[i] );				
-					}
+					TermoConsultas t = new TermoConsultas();
+					t.setTermo(parts[i]);
 					
+					Frequencia f = new Frequencia();							
+					f.setDocumento(consulta.getQueryNumber());
+					f.setFrequencia(0);
+					
+					t.setFrequencia(f);
+					
+					hashTermosConsultas.put(parts[i], t);
+					hashTermosConsultas.get(parts[i]).getFrequencia().incrementaFrequencia();
 				}
+				else if(hashTermosConsultas.get(parts[i]) != null){
+					hashTermosConsultas.get(parts[i]).getFrequencia().incrementaFrequencia();
+					
+//					System.out.println(hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).getDocumento()+" - " +
+//							hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).getFrequencia()
+//							+" --- "+parts[i] );				
+				}
+				
 			}
-			
 		}
 		
-		return hashFrequencias;
+		consulta.setHashTermosConsulta(hashTermosConsultas);
 		
 	}
 	
@@ -513,45 +531,27 @@ public class Extrator {
 		return af;
 	}
 	
-	private static ArrayList<Frequencia> iniciaFrequenciasConsultas(ArrayList<Consultas> consultas){
-			
-		ArrayList<Frequencia> af = new ArrayList<>();
-		
-		for (Consultas c : consultas) {
-					
-			Frequencia f = new Frequencia();
-			
-			f.setDocumento(c.getQueryNumber());
-			f.setFrequencia(0);
-			
-			af.add(f);
-		}
-		
-		return af;
-	}
+
 	
-	public static HashMap<String, Double> calculaIDF(HashMap<String, ArrayList<Frequencia>> hashFrequencias, int numero_de_documentos){
-		
-		HashMap<String, Double> hashIDF = new HashMap<>();
+	private static void calculaIDF(HashMap<String, TermoDocumentos> hashFrequencias, int numero_de_documentos){
 		
 	
 		Iterator it = hashFrequencias.entrySet().iterator();
 	    while (it.hasNext()) {
 	        HashMap.Entry pairs = (HashMap.Entry)it.next();
    
-	        ArrayList<Frequencia> fr = (ArrayList<Frequencia>) pairs.getValue();
+	        TermoDocumentos t = (TermoDocumentos) pairs.getValue();
 	        
-//	        System.out.println(pairs.getKey() + " -- " + Math.log10(numero_de_documentos/size(fr)));
+	        ArrayList<Frequencia> fr = t.getFrequenciasDocumentos();
+	        
+	   //     System.out.println(pairs.getKey() + " -- " + Math.log10(numero_de_documentos/size(fr)));
 	        
 	        Double idf = Math.log10(numero_de_documentos/size(fr));
 	        
-	        hashIDF.put((String) pairs.getKey(), idf);
+	        t.setIDFDocumentos(idf);
 
-	        
-	        it.remove(); // avoids a ConcurrentModificationException
 	    }
 		
-	    return hashIDF;
 	}
 	
 	public static int size(ArrayList<Frequencia> arrayFrequencias){
