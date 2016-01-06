@@ -1,3 +1,4 @@
+
 public class TermoConsultas {
 
 	private String termo;

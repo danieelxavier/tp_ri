@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,8 +10,8 @@ import java.util.Iterator;
 
 public class Extrator {
 
-	
-	public static ArrayList<Documento> extrairDocumentos(){
+	//Metodo que extrai os dados dos documentos
+	public static ArrayList<Documento> extrairDocumentos(String path){
 		
 		ArrayList<Documento> documentos = new ArrayList<>();
 		FileInputStream stream;
@@ -19,7 +20,7 @@ public class Extrator {
 		int c=0;
 		while(i < 80){
 			try {
-				stream = new FileInputStream("assets/cfc/cf" + i);
+				stream = new FileInputStream(path + "cf" + i);
 				InputStreamReader reader = new InputStreamReader(stream);
 				BufferedReader br = new BufferedReader(reader);
 				String linha = br.readLine();
@@ -28,12 +29,12 @@ public class Extrator {
 				while(linha != null) {
 						
 					Documento doc = new Documento();
-
+					
+					//EXTRAI O PAGE NUMBER
 					if(linha != null && linha.startsWith("PN")){
 						linha = linha.replace("PN ", "");
 						linha = linha.trim();
 						linha = linha.toUpperCase();  
-				//		System.out.println(linha);
 						doc.setPaperNumber(linha);						
 						
 						linha = br.readLine();
@@ -42,29 +43,31 @@ public class Extrator {
 						scape = scape.replace("PN ", "");
 						scape = scape.trim();
 						linha = linha.toUpperCase();  
-				//		System.out.println(scape);
 						doc.setPaperNumber(scape);	
 					}
 					
+					//EXTRAI O RECORD NUMBER
 					if(linha != null && linha.startsWith("RN")){
 						linha = linha.replace("RN ", "");
 						linha = linha.trim();
 						linha = linha.toUpperCase();  
-				//		System.out.println(linha);
 						doc.setRecordNumber(Integer.parseInt(linha));
 						doc.setYear(ano);
 					
 						linha = br.readLine();
 					}
+					
+					//EXTRAI O ACESS NUMBER
 					if(linha != null && linha.startsWith("AN")){
 						linha = linha.replace("AN ", "");
 						linha = linha.trim();
 						linha = linha.toUpperCase();  
-				//		System.out.println(linha);
 						doc.setMedlineAcessionNumber(linha);
 					
 						linha = br.readLine();
 					}
+					
+					//EXTRAI OS AUTORES
 					if(linha != null && linha.startsWith("AU")){
 						ArrayList<String> authors = new ArrayList<>();
 						String aux = "";
@@ -79,13 +82,14 @@ public class Extrator {
 							linha = br.readLine();
 						}
 
-			//			System.out.println(aux);
 						String a[] = aux.split("  ");
 						for (String string : a) {
 							authors.add(string);
 						}
 						doc.setAuthors(authors);
 					}
+					
+					//EXTRAI O TITULO
 					if(linha != null && linha.startsWith("TI")){
 						String aux = "";
 						
@@ -99,21 +103,23 @@ public class Extrator {
 							linha = br.readLine();
 						}
 						
-				//		System.out.println(aux);
 						doc.setTitle(aux);
 						
 					}
+					
+					//EXTRAI OS SOURCES
 					if(linha != null && linha.startsWith("SO")){
 						while (linha.startsWith("SO") || linha.startsWith(" ")) {
 							linha = linha.replace("SO ", "");
 							linha = linha.trim();
 							linha = linha.toUpperCase();  
-				//			System.out.println(linha);
 							doc.setSource(linha);
 						
 							linha = br.readLine();
 						}
 					}
+					
+					//EXTRAI OS MAJOR SUBJECTS
 					if(linha != null && linha.startsWith("MJ")){
 						ArrayList<String> major = new ArrayList<>();
 						String aux = "";
@@ -128,14 +134,14 @@ public class Extrator {
 							linha = br.readLine();
 						}
 						
-
-			//			System.out.println(aux);
 						String a[] = aux.split("  ");
 						for (String string : a) {
 							major.add(string);
 						}
 						doc.setMajorSubjects(major);
 					}
+					
+					//EXTRAI OS MINOR SUBJECTS
 					if(linha != null && linha.startsWith("MN")){
 						ArrayList<String> minor = new ArrayList<>();
 						String aux = "";
@@ -150,13 +156,14 @@ public class Extrator {
 							linha = br.readLine();
 						}
 						
-			//			System.out.println(aux);
 						String a[] = aux.split("  ");
 						for (String string : a) {
 							minor.add(string);
 						}
 						doc.setMinorSubjects(minor);
 					}
+					
+					//EXTRAI OS ABSTRACTS
 					if(linha != null && linha.startsWith("AB") || linha.startsWith("EX")){
 						String aux = "";
 						
@@ -171,13 +178,12 @@ public class Extrator {
 							linha = br.readLine();
 						}
 
-			//			System.out.println(aux);
 						doc.setAbstract(aux);
 					}
-					else if(!linha.startsWith(" ")){
-				//		System.out.println(doc.getPaperNumber() +" --- "+linha);
-					}
+//					else if(!linha.startsWith(" ")){
+//					}
 					
+					//EXTRAI AS REFERENCIAS
 					if(linha != null && linha.startsWith("RF")){
 						ArrayList<String> rf = new ArrayList<>();
 						
@@ -185,13 +191,14 @@ public class Extrator {
 							linha = linha.replace("RF ", "");
 							linha = linha.trim();
 							linha = linha.toUpperCase();  
-			//				System.out.println(linha);
 							rf.add(linha);
 							
 							linha = br.readLine();
 						}
 						doc.setReferences(rf);
 					}
+					
+					//EXTRAI AS CITACOES
 					if(linha != null && linha.startsWith("CT")){
 						ArrayList<String> ct = new ArrayList<>();
 						
@@ -199,7 +206,6 @@ public class Extrator {
 							linha = linha.replace("CT ", "");
 							linha = linha.trim();
 							linha = linha.toUpperCase();  
-			//				System.out.println(linha);
 							ct.add(linha);
 						
 							linha = br.readLine();
@@ -226,21 +232,18 @@ public class Extrator {
 			ano++;
 		}
 		
-	//	System.out.println(c);
-		
 		return documentos;
 	}
 	
 	
-	
-	
-	public static ArrayList<Consulta> extrairConsultas(){
+	//Metodo que extrai os dados das consultas	
+	public static ArrayList<Consulta> extrairConsultas(String path){
 		
 		ArrayList<Consulta> consultas = new ArrayList<>();
 		FileInputStream stream;
 
 		try {
-			stream = new FileInputStream("assets/cfc/cfquery");
+			stream = new FileInputStream(path + "cfquery");
 			InputStreamReader reader = new InputStreamReader(stream);
 			BufferedReader br = new BufferedReader(reader);
 			String linha = br.readLine();
@@ -249,16 +252,17 @@ public class Extrator {
 				
 				Consulta consult = new Consulta();
 				
+				//EXTRAI OS QUERY NUMBERS
 				if(linha != null && linha.startsWith("QN")){
 					linha = linha.replace("QN ", "");
 					linha = linha.trim();
 					linha = linha.toUpperCase();  
-			//		System.out.println(linha);
 					consult.setQueryNumber(Integer.parseInt(linha));
 				
 					linha = br.readLine();
 				}
 				
+				//EXTRAI AS CONSULTAS
 				if(linha != null && linha.startsWith("QU")){
 					String aux = "";
 					
@@ -272,20 +276,20 @@ public class Extrator {
 						linha = br.readLine();
 					}
 
-		//			System.out.println(consult.getQueryNumber() + " - " + aux);
 					consult.setQuery(aux);
 				}
 				
+				//EXTRAI O NUMERO DE DOCUMENTOS RELEVANTES PARA A CONSULTA
 				if(linha != null && linha.startsWith("NR")){
 					linha = linha.replace("NR ", "");
 					linha = linha.trim();
 					linha = linha.toUpperCase();  
-			//		System.out.println(linha);
-					consult.setRecordNumber(Integer.parseInt(linha));
+					consult.setNR(Integer.parseInt(linha));
 					
 					linha = br.readLine();
 				}
 				
+				//EXTRAI AS AVALIAÇÕES DOS DOCUMENTOS (QUE SÃO OS RELEVANTES)
 				if(linha != null && linha.startsWith("RD")){
 					ArrayList<AvaliacaoConsulta> arrayAvaliacoes = new ArrayList<>();
 					
@@ -317,8 +321,6 @@ public class Extrator {
 							ac.setAvaliacoes(avaliacoes);
 							
 							arrayAvaliacoes.add(ac);
-
-			//				System.out.println(array[i] + " - " + array[i+1]);
 						}
 						
 						linha = br.readLine();
@@ -331,14 +333,10 @@ public class Extrator {
 
 				if(consult.getQuery() != null)
 					consultas.add(consult);
-				else
-		//			System.out.println("FAIL");
 				
 				linha = br.readLine();
 				
 			}
-			
-
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -353,7 +351,8 @@ public class Extrator {
 	}
 	
 	
-	public static HashMap<String, TermoDocumentos> getTFDocumentos(ArrayList<Documento> documentos){
+	//Método que extrai os termos, com seus TF e IDF
+	public static HashMap<String, TermoDocumentos> getListaInvertida(ArrayList<Documento> documentos){
 		
 		HashMap<String, TermoDocumentos> hashTermos = new HashMap<>();
 		
@@ -416,9 +415,6 @@ public class Extrator {
 							}
 							else if(hashTermos.get(parts[i]) != null){
 								hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
-//								System.out.println(hashFrequencias.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).getDocumento()+" - " +
-//										hashFrequencias.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).getFrequencia()
-//										+" --- "+parts[i] );
 							}
 							
 						}
@@ -426,12 +422,13 @@ public class Extrator {
 					}
 				}
 			}
-			
-			
-			
+						
 			
 		// PEGA OS TERMOS DO ABSTRACT---------------------------
 			aux = d.getAbstract();
+			if(aux == null){
+				aux = "";
+			}
 			parts = aux.split("[\\W]");
 			
 			
@@ -451,29 +448,22 @@ public class Extrator {
 					}
 					else{
 						hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
-	
-//						System.out.println(hashFrequencias.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).getDocumento()+" - " +
-//								hashFrequencias.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).getFrequencia()
-//								+" --- "+parts[i] );
 					}
 				}
-			}			
-			
+			}	
 		}
-		
 
 		calculaIDF(hashTermos, documentos.size());
 		return hashTermos;
 		
 	}
 	
+	//método que calcula a frequencia de um termo em todas os documentos
 	public static void getTFConsulta(Consulta consulta){
 		
 		HashMap<String, TermoConsultas> hashTermosConsultas = new HashMap<>();
-		
-		
+				
 		String aux;
-		
 		
 		aux = consulta.getQuery();
 		String[] parts = aux.split("[\\W]");
@@ -499,10 +489,7 @@ public class Extrator {
 				}
 				else if(hashTermosConsultas.get(parts[i]) != null){
 					hashTermosConsultas.get(parts[i]).getFrequencia().incrementaFrequencia();
-					
-//					System.out.println(hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).getDocumento()+" - " +
-//							hashFrequencias.get(parts[i]).get(c.getQueryNumber()-1).getFrequencia()
-//							+" --- "+parts[i] );				
+								
 				}
 				
 			}
@@ -512,8 +499,7 @@ public class Extrator {
 		
 	}
 	
-	
-	
+	//método que inicia o vetor de frequencias dos documentos para um termo
 	private static ArrayList<Frequencia> iniciaFrequenciasDocumentos(ArrayList<Documento> documentos){
 		
 		ArrayList<Frequencia> af = new ArrayList<>();
@@ -531,11 +517,9 @@ public class Extrator {
 		return af;
 	}
 	
-
-	
+	//método que calcula o IDF para os termos
 	private static void calculaIDF(HashMap<String, TermoDocumentos> hashFrequencias, int numero_de_documentos){
 		
-	
 		Iterator it = hashFrequencias.entrySet().iterator();
 	    while (it.hasNext()) {
 	        HashMap.Entry pairs = (HashMap.Entry)it.next();
@@ -543,9 +527,7 @@ public class Extrator {
 	        TermoDocumentos t = (TermoDocumentos) pairs.getValue();
 	        
 	        ArrayList<Frequencia> fr = t.getFrequenciasDocumentos();
-	        
-	   //     System.out.println(pairs.getKey() + " -- " + Math.log10(numero_de_documentos/size(fr)));
-	        
+	        	        
 	        Double idf = Math.log10(numero_de_documentos/size(fr));
 	        
 	        t.setIDFDocumentos(idf);

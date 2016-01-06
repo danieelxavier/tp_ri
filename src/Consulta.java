@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,6 +16,7 @@ public class Consulta {
 	private static HashMap<String, TermoConsultas> hashTermosConsulta;		
 	private static ArrayList<ArrayList<Double>> vetoresDocumentos;
 	private static ArrayList<Similaridade> similaridades;
+	private static ArrayList<Similaridade> retornados;
 	
 	public int getQueryNumber() {
 		return QueryNumber;
@@ -28,7 +30,6 @@ public class Consulta {
 	public void setQuery(String query) {
 		Query = query;
 	}
-
 	public ArrayList<AvaliacaoConsulta> getAvaliacoes() {
 		return avaliacoes;
 	}
@@ -38,7 +39,7 @@ public class Consulta {
 	public int getNR() {
 		return NR;
 	}
-	public void setRecordNumber(int NR) {
+	public void setNR(int NR) {
 		this.NR = NR;
 	}
 	public ArrayList<ArrayList<Double>> getVetoresDocumentos() {
@@ -59,58 +60,87 @@ public class Consulta {
 	public void setSimilaridades(ArrayList<Similaridade> similaridades) {
 		Consulta.similaridades = similaridades;
 	}
+	public ArrayList<Similaridade> getRetornados() {
+		return retornados;
+	}
+	public static void setRetornados(ArrayList<Similaridade> retornados) {
+		Consulta.retornados = retornados;
+	}
 
 	
+	//Método que faz o processamento das consultas gerando o ranking de similaridade
 	public void processaConsulta(HashMap<String, TermoDocumentos> hashTermosDocumentos){
 	
-		Extrator.getTFConsulta(this);
+		Extrator.getTFConsulta(this); //extrai os termos da consulta
 		vetorQuery = new ArrayList<>();
 		vetoresDocumentos = new ArrayList<>();
 		
-	
 		Iterator it = hashTermosConsulta.entrySet().iterator();
+		
 	    while (it.hasNext()) {
 	        HashMap.Entry pairs = (HashMap.Entry)it.next();
    
 	        TermoDocumentos t = hashTermosDocumentos.get(pairs.getKey());
-			
-	        Double idf = t.getIDFDocumentos();
 	        
-	        ArrayList<Frequencia> fr = t.getFrequenciasDocumentos();
-	        	        
-	        for (Frequencia frequencia : fr) {
+	        if(t != null){
 	        	
-	        	if(frequencia.getDocumento() > vetoresDocumentos.size()){
-	        		ArrayList<Double> v = new ArrayList<>();
-	        		v.add(frequencia.getFrequencia() * t.getIDFDocumentos());
-	        		vetoresDocumentos.add(v);
-	        	}
-	        	else{
-	        		vetoresDocumentos.get(frequencia.getDocumento()-1).add(frequencia.getFrequencia() * t.getIDFDocumentos());
-	        	}
-				
-	        	//System.out.println(t.getTermo() + " - " + vetoresDocumentos.get(frequencia.getDocumento()-1).size());
-			}
-	        
-	        
+		        Double idf = t.getIDFDocumentos();
+		        
+		        ArrayList<Frequencia> fr = t.getFrequenciasDocumentos();
+		        	        
+		        for (Frequencia frequencia : fr) {
+		        	
+		        	if(frequencia.getDocumento() > vetoresDocumentos.size()){
+		        		ArrayList<Double> v = new ArrayList<>();
+		        		v.add(frequencia.getFrequencia() * t.getIDFDocumentos());
+		        		vetoresDocumentos.add(v);
+		        	}
+		        	else{
+		        		vetoresDocumentos.get(frequencia.getDocumento()-1).add(frequencia.getFrequencia() * t.getIDFDocumentos());
+		        	}
+					
+//		        	System.out.println(t.getTermo() + " - " + vetoresDocumentos.get(frequencia.getDocumento()-1).size());
+				}
+	        		        	
+	        }
+	        else{ //entra aqui quando algum termo na consulta não consta na lista invertida dos termos dos documentos
+	        	
+	        	for (ArrayList<Double> vd : vetoresDocumentos) {
+					vd.add(0.0);
+				}
+	        }
+
 	    }
-		
+			    
 	    it = hashTermosConsulta.entrySet().iterator();
 	    while (it.hasNext()) {
 	        HashMap.Entry pairs = (HashMap.Entry)it.next();
 	        
 	        TermoConsultas t = (TermoConsultas) pairs.getValue();
 	        
-	        t.setIDFDocumentos(hashTermosDocumentos.get(t.getTermo()).getIDFDocumentos());
+	        if(hashTermosDocumentos.get(t.getTermo()) == null){
+	        	t.setIDFDocumentos(0.0);
+	        }
+	        else{
+	        	t.setIDFDocumentos(hashTermosDocumentos.get(t.getTermo()).getIDFDocumentos());
+	        }
 	        
 	        vetorQuery.add(t.getIDFDocumentos() * t.getFrequencia().getFrequencia());
 	        
 	    }
 	    
-	    calcularSimilaridades();
+	    calcularSimilaridades(); //calcula a similaridade
+	    
+	    retornados = new ArrayList<>();
+	    
+	    //gera uma lista apenas com os 10 documentos mais similares
+	    for (int i = 0; i < 10; i++) {
+			retornados.add(similaridades.get(i));
+		}
+	    
 	}
 	
-	
+	//Método que calcula a similaridade entre a consulta e os documentos
 	public void calcularSimilaridades(){
 		
 		similaridades = new ArrayList<>();
@@ -147,7 +177,7 @@ public class Consulta {
 			j++;
 		}	
 
-		
+		//ordena os valores de similaridade
 		Collections.sort(similaridades, Collections.reverseOrder(new Comparator<Similaridade>() {
 
 			@Override
