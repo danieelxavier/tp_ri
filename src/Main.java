@@ -3,8 +3,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,12 +19,16 @@ public class Main {
 	static long tempoAtual;
 	static Double tempoResult;
 	
+	static Double mediaMAP;
+	static Double mediaP;
+	static Double mediaTempo;
+	
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		
 		tempoInicial = System.currentTimeMillis();
 		
-		String arg = "/home/daniel/Área de Trabalho/docs";
+		String arg = args[0];
 		
 		if(!arg.endsWith("/"))
 			arg = arg + "/";
@@ -37,8 +39,8 @@ public class Main {
 			System.out.println("Extraindo dados ...");
 			
 			documentos = Extrator.extrairDocumentos(arg); //extrai os dados dos documentos do arquivo txt
-			consultas = Extrator.extrairConsultas(arg); //extrai os dados das consultas do arquivo txt
 			listaInvertidaDocumentos = Extrator.getListaInvertida(documentos); //extrai todos os termos dos documentos, calculando TF e IDF
+			consultas = Extrator.extrairConsultas(arg); //extrai os dados das consultas do arquivo txt
 			
 			tempoAtual = System.currentTimeMillis();
 			System.out.println("Extração Finalizada em " + timeToSeconds(tempoAtual, tempoInicial) + " segundos.");
@@ -48,10 +50,18 @@ public class Main {
 			
 			gravarArq.printf("--------------------> RESULTADOS DAS CONSULTAS <--------------------\n\n\n");
 			
+			mediaMAP = 0.0;
+			mediaP = 0.0;
+			mediaTempo = 0.0;
 			//executa as consultas
 			for (Consulta c : consultas) {
 				processa(c);
 			}
+			
+			
+			gravarArq.printf("\n\t\t Media MAP " + mediaMAP/consultas.size());
+			gravarArq.printf("\n\t\t Media P@10 " + mediaP/consultas.size());
+			gravarArq.printf("\n\t\t Media Tempo " + mediaTempo/consultas.size());
 			
 			tempoAtual = System.currentTimeMillis();
 			gravarArq.printf("\n\t\t Processo finalizado em " + timeToSeconds(tempoAtual, tempoInicial) + " segundos.");
@@ -78,19 +88,28 @@ public class Main {
 		consulta.processaConsulta(listaInvertidaDocumentos); //gera o ranking de similaridade para a consulta
 		
 		int y=1;
-		for (Similaridade s : consulta.getRetornados()) {
+		for (Similaridade s : consulta.getSimilaridades()) {
 			gravarArq.printf(y + ") " +s.getDocumento() + " - " + s.getSim());
 			gravarArq.printf("\n");
 			y++;
 		}
 		
-		gravarArq.printf("\nP@10 : " + Medidas.precisaoN(consulta, 10)); //Calcula a precição em N de uma consulta
-		gravarArq.printf("\nMAP : " + Medidas.MAP(consulta)); //Calcula o MAP de uma consulta
+		Double MAP = Medidas.MAP(consulta);
+		Double P10 = Medidas.precisaoN(consulta, 10);
+		
+		mediaMAP = mediaMAP + MAP;
+		mediaP = mediaP + P10;
+		
+		gravarArq.printf("\nP@10 : " + P10); //Calcula a precição em N de uma consulta
+		gravarArq.printf("\nMAP : " + MAP); //Calcula o MAP de uma consulta
 		
 		tempoAtual = System.currentTimeMillis();
 		
-		gravarArq.printf("\n\nProcessamento realizado em " + timeToSeconds(tempoAtual, tempo) + " segundos.");
+		Double tempoProcess = timeToSeconds(tempoAtual, tempo);		
+		gravarArq.printf("\n\nProcessamento realizado em " + tempoProcess + " segundos.");
 		gravarArq.printf("\n\n------------------------------------------\n\n");
+		
+		mediaTempo = mediaTempo + tempoProcess;
 	}
 	
 	static Double timeToSeconds(long a, long b){
