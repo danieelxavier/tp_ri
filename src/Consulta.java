@@ -16,7 +16,7 @@ public class Consulta {
 	private static HashMap<String, TermoConsultas> hashTermosConsulta;		
 	private static ArrayList<ArrayList<Double>> vetoresDocumentos;
 	private static ArrayList<Similaridade> similaridades;
-	//private static ArrayList<Similaridade> retornados;
+	private static ArrayList<Similaridade> retornados;
 	
 	public int getQueryNumber() {
 		return QueryNumber;
@@ -60,18 +60,18 @@ public class Consulta {
 	public void setSimilaridades(ArrayList<Similaridade> similaridades) {
 		Consulta.similaridades = similaridades;
 	}
-//	public ArrayList<Similaridade> getRetornados() {
-//		return retornados;
-//	}
-//	public static void setRetornados(ArrayList<Similaridade> retornados) {
-//		Consulta.retornados = retornados;
-//	}
+	public ArrayList<Similaridade> getRetornados() {
+		return retornados;
+	}
+	public static void setRetornados(ArrayList<Similaridade> retornados) {
+		Consulta.retornados = retornados;
+	}
 
 	
 	//Método que faz o processamento das consultas gerando o ranking de similaridade
-	public void processaConsulta(HashMap<String, TermoDocumentos> hashTermosDocumentos){
+	public void processaConsulta(HashMap<String, TermoDocumentos> hashTermosDocumentos, ArrayList<String> stopWords){
 	
-		Extrator.getTFConsulta(this); //extrai os termos da consulta
+		Extrator.getTFConsulta(this, stopWords); //extrai os termos da consulta
 		vetorQuery = new ArrayList<>();
 		vetoresDocumentos = new ArrayList<>();
 		
@@ -131,13 +131,15 @@ public class Consulta {
 	    
 	    calcularSimilaridades(); //calcula a similaridade
 	    
-//	    retornados = new ArrayList<>();
-//	    
-//	    //gera uma lista apenas com os 10 documentos mais similares
-//	    for (int i = 0; i < 10; i++) {
-//			retornados.add(similaridades.get(i));
-//		}
+	    retornados = new ArrayList<>();
 	    
+	    //gera uma lista apenas com os 10 documentos mais similares
+	    
+	    for (Similaridade s : similaridades) {
+	    	if(s.getSim() > 0)
+		    	retornados.add(s);
+		}
+	   	    
 	}
 	
 	//Método que calcula a similaridade entre a consulta e os documentos
