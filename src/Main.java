@@ -62,7 +62,8 @@ public class Main {
 			
 			gravarArq.printf("\n\t\t Media MAP:\t" + mediaMAP/consultas.size());
 			gravarArq.printf("\n\t\t Media P@10:\t" + mediaP/consultas.size());
-			gravarArq.printf("\n\t\t Media Tempo:\t" + mediaTempo/consultas.size());
+			gravarArq.printf("\n\t\t Consultas processadas em: %.3f segundos", mediaTempo);
+			gravarArq.printf("\n\t\t Media Tempo por consulta: %.3f segundos", mediaTempo/consultas.size());
 			
 			tempoAtual = System.currentTimeMillis();
 			gravarArq.printf("\n\n\t\t Processo finalizado em " + timeToSeconds(tempoAtual, tempoInicial) + " segundos.\n\n");
