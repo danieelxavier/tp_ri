@@ -12,8 +12,7 @@ public class Consulta {
 	private int NR;
 	private ArrayList<AvaliacaoConsulta> avaliacoes;
 	ArrayList<Double> vetorQuery;
-	ArrayList<Double> vetorQueryIdf;
-	ArrayList<Double> vetorQueryFreq;
+	ArrayList<ArrayList<Frequencia>> vetorQueryTermos;
 	ArrayList<Documento> documentos;
 	private Double mediaDocumentos;
 	
@@ -77,8 +76,7 @@ public class Consulta {
 	
 		Extrator.getTFConsulta(this, stopWords); //extrai os termos da consulta
 		vetorQuery = new ArrayList<>();
-		vetorQueryIdf = new ArrayList<>();
-		vetorQueryFreq = new ArrayList<>();
+		vetorQueryTermos = new ArrayList<>();
 		vetoresDocumentos = new ArrayList<>();
 		mediaDocumentos = md;
 		documentos = docs;
@@ -124,6 +122,7 @@ public class Consulta {
 	    while (it.hasNext()) {
 	        HashMap.Entry pairs = (HashMap.Entry)it.next();
 	        
+	        
 	        TermoConsultas t = (TermoConsultas) pairs.getValue();
 	        
 	        if(hashTermosDocumentos.get(t.getTermo()) == null){
@@ -134,13 +133,18 @@ public class Consulta {
 	        }
 	        
 	        vetorQuery.add(t.getIDFDocumentos() * t.getFrequencia().getFrequencia());
-	        	vetorQueryIdf.add(t.getIDFDocumentos());
-	        	vetorQueryFreq.add((double) t.getFrequencia().getFrequencia());
-	        
+
+	        TermoDocumentos tc = hashTermosDocumentos.get(pairs.getKey());
+	        if(tc != null) {
+	        		vetorQueryTermos.add(tc.getFrequenciasDocumentos());
+	        }
+	        else {
+	        		vetorQueryTermos.add(null);
+	        }
 	    }
 	    
 //	    calcularSimilaridades(); //calcula a similaridade
-	    calcularSimilaridadesBM25(); //calcula a similaridade
+	    calcularSimilaridades(); //calcula a similaridade
 	    
 	    retornados = new ArrayList<>();
 	    
@@ -152,6 +156,92 @@ public class Consulta {
 		}
 	   	    
 	}
+	
+	//Método que faz o processamento das consultas gerando o ranking de similaridade BM25
+		public void processaConsultaBM25(HashMap<String, TermoDocumentos> hashTermosDocumentos, ArrayList<String> stopWords, ArrayList<Documento> docs, Double md){
+		
+			Extrator.getTFConsulta(this, stopWords); //extrai os termos da consulta
+			vetorQuery = new ArrayList<>();
+			vetorQueryTermos = new ArrayList<>();
+			vetoresDocumentos = new ArrayList<>();
+			mediaDocumentos = md;
+			documentos = docs;
+			
+			Iterator it = hashTermosConsulta.entrySet().iterator();
+			
+		    while (it.hasNext()) {
+		        HashMap.Entry pairs = (HashMap.Entry)it.next();
+	   
+		        TermoDocumentos t = hashTermosDocumentos.get(pairs.getKey());
+		        
+		        if(t != null){
+		        	
+			        Double idf = t.getIDFDocumentos();
+			        
+			        ArrayList<Frequencia> fr = t.getFrequenciasDocumentos();
+			        	        
+			        for (Frequencia frequencia : fr) {
+			        	
+			        	if(frequencia.getDocumento() > vetoresDocumentos.size()){
+			        		ArrayList<Double> v = new ArrayList<>();
+			        		v.add(frequencia.getFrequencia() * t.getIDFDocumentos());
+			        		vetoresDocumentos.add(v);
+			        	}
+			        	else{
+			        		vetoresDocumentos.get(frequencia.getDocumento()-1).add(frequencia.getFrequencia() * t.getIDFDocumentos());
+			        	}
+						
+//			        	System.out.println(t.getTermo() + " - " + vetoresDocumentos.get(frequencia.getDocumento()-1).size());
+					}
+		        		        	
+		        }
+		        else{ //entra aqui quando algum termo na consulta não consta na lista invertida dos termos dos documentos
+		        	
+		        	for (ArrayList<Double> vd : vetoresDocumentos) {
+						vd.add(0.0);
+					}
+		        }
+
+		    }
+				    
+		    it = hashTermosConsulta.entrySet().iterator();
+		    while (it.hasNext()) {
+		        HashMap.Entry pairs = (HashMap.Entry)it.next();
+		        
+		        
+		        TermoConsultas t = (TermoConsultas) pairs.getValue();
+		        
+		        if(hashTermosDocumentos.get(t.getTermo()) == null){
+		        	t.setIDFDocumentos(0.0);
+		        }
+		        else{
+		        	t.setIDFDocumentos(hashTermosDocumentos.get(t.getTermo()).getIDFDocumentos());
+		        }
+		        
+		        vetorQuery.add(t.getIDFDocumentos() * t.getFrequencia().getFrequencia());
+
+		        TermoDocumentos tc = hashTermosDocumentos.get(pairs.getKey());
+		        if(tc != null) {
+		        		vetorQueryTermos.add(tc.getFrequenciasDocumentos());
+		        }
+		        else {
+		        		vetorQueryTermos.add(null);
+		        }
+		    }
+		    
+//		    calcularSimilaridades(); //calcula a similaridade
+		    calcularSimilaridadesBM25(); //calcula a similaridade
+		    
+		    retornados = new ArrayList<>();
+		    
+		    //gera uma lista apenas com os 10 documentos mais similares
+		    
+		    for (Similaridade s : similaridades) {
+		    	if(s.getSim() > 0)
+			    	retornados.add(s);
+			}
+		   	    
+		}
 	
 	//Método que calcula a similaridade entre a consulta e os documentos
 	public void calcularSimilaridades(){
@@ -212,27 +302,53 @@ public class Consulta {
 			for (Documento v : documentos) {
 				
 				Double Fqd = 0.0;
-				Double k1 = 1.0;
+				Double k1 = 1.7;
 				Double b = 0.75;
 				Double tamD = (double) v.getTamanho();
 				
 				Double score = 0.0;
 				
-				for(int i = 0; i < vetorQueryFreq.size(); i++){
+				Double idf = 0.0;
+				
+				for(int i = 0; i < vetorQueryTermos.size(); i++){
 					
-					Fqd = (double) vetorQueryFreq.get(i);
+					if(vetorQueryTermos.get(i) != null) {
+						Fqd = (double) vetorQueryTermos.get(i).get(j-1).getFrequencia();
+					}
 					
 					Double A = Fqd * (k1+1);
 					Double B = 1 - b + (b * (tamD / mediaDocumentos));
+					Double C = Fqd + (k1 * B);
 					
-					score += vetorQueryIdf.get(i) * (A / Fqd + (k1 * B));
+//					System.out.println("FREQ => " + vetorQueryFreq.get(i));
+//					System.out.println("FREQ => " + vetorQueryTermos.get(i).size());
+					
+					int ndq = 0;
+					if(vetorQueryTermos.get(i) != null) {
+						for(Frequencia f : vetorQueryTermos.get(i)) {
+							if(f.getFrequencia() > 0)
+								ndq++;
+						}
+					}
+					
+					idf = Math.log((documentos.size() - (double)ndq + 0.5) / (ndq + 0.5));
+					
+//					System.out.println("IDF => " + idf);
+//					System.out.println("A => " + A);
+//					System.out.println("Fqd => " + Fqd);
+//					System.out.println("k1 => " + k1);
+//					System.out.println("B => " + B);
+					
+					if(C != 0)
+						score += idf * (A / C);
+					
 					
 				}
 				
 				
 				Similaridade s = new Similaridade();
 				
-				if(score.isNaN())
+				if(score == 0.0)
 					s.setSim(0.0);
 				else
 					s.setSim(score);

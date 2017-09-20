@@ -20,9 +20,13 @@ public class Main {
 	static long tempoAtual;
 	static Double tempoResult;
 	
-	static Double mediaMAP;
-	static Double mediaP;
-	static Double mediaTempo;
+	static Double mediaMAPV;
+	static Double mediaPV;
+	static Double mediaTempoV;
+	
+	static Double mediaMAPB;
+	static Double mediaPB;
+	static Double mediaTempoB;
 	
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
@@ -59,19 +63,36 @@ public class Main {
 			
 			gravarArq.printf("--------------------> RESULTADOS DAS CONSULTAS <--------------------\n\n\n");
 			
-			mediaMAP = 0.0;
-			mediaP = 0.0;
-			mediaTempo = 0.0;
+			mediaMAPV = 0.0;
+			mediaPV = 0.0;
+			mediaTempoV = 0.0;
+			
+			mediaMAPB = 0.0;
+			mediaPB = 0.0;
+			mediaTempoB = 0.0;
 			//executa as consultas
 			for (Consulta c : consultas) {
-				processa(c, mediaDocumentos);
+				processa(c, mediaDocumentos, 1);
+			}
+//			processa(consultas.get(0), mediaDocumentos);
+			
+			for (Consulta c : consultas) {
+				processa(c, mediaDocumentos, 2);
 			}
 			
 			
-			gravarArq.printf("\n\t\t Media MAP:\t" + mediaMAP/consultas.size());
-			gravarArq.printf("\n\t\t Media P@10:\t" + mediaP/consultas.size());
-			gravarArq.printf("\n\t\t Consultas processadas em: %.3f segundos", mediaTempo);
-			gravarArq.printf("\n\t\t Media Tempo por consulta: %.3f segundos", mediaTempo/consultas.size());
+			gravarArq.printf("\n\t\t Media MAP Vetorial:\t" + mediaMAPV/consultas.size());
+			gravarArq.printf("\n\t\t Media P@10 Vetorial:\t" + mediaPV/consultas.size());
+			gravarArq.printf("\n\t\t Consultas processadas em: %.3f segundos", mediaTempoV);
+			gravarArq.printf("\n\t\t Media Tempo por consulta: %.3f segundos", mediaTempoV/consultas.size());
+			
+
+			gravarArq.printf("\n\n ------------------------------------------------------------------\n", mediaTempoB/consultas.size());
+			
+			gravarArq.printf("\n\t\t Media MAP BM25:\t" + mediaMAPB/consultas.size());
+			gravarArq.printf("\n\t\t Media P@10 BM25:\t" + mediaPB/consultas.size());
+			gravarArq.printf("\n\t\t Consultas processadas em: %.3f segundos", mediaTempoB);
+			gravarArq.printf("\n\t\t Media Tempo por consulta: %.3f segundos", mediaTempoB/consultas.size());
 			
 			tempoAtual = System.currentTimeMillis();
 			gravarArq.printf("\n\n\t\t Processo finalizado em " + timeToSeconds(tempoAtual, tempoInicial) + " segundos.\n\n");
@@ -87,7 +108,7 @@ public class Main {
 	}
 	
 	
-	static void processa(Consulta consulta, Double mediaDocumentos){
+	static void processa(Consulta consulta, Double mediaDocumentos, int tipo){
 		
 		long tempo = System.currentTimeMillis();
 		
@@ -95,20 +116,31 @@ public class Main {
 		gravarArq.printf("CONSULTA " + consulta.getQueryNumber());
 		gravarArq.printf("\n");
 		
-		consulta.processaConsulta(listaInvertidaDocumentos, stopWords, documentos, mediaDocumentos); //gera o ranking de similaridade para a consulta
-		
-		int y=1;
-		for (Similaridade s : consulta.getRetornados()) {
-			gravarArq.printf(y + ") " +s.getDocumento() + " - " + s.getSim());
-			gravarArq.printf("\n");
-			y++;
+		if(tipo == 1) {
+			consulta.processaConsulta(listaInvertidaDocumentos, stopWords, documentos, mediaDocumentos); //gera o ranking de similaridade para a consulta					
 		}
+		else {
+			consulta.processaConsultaBM25(listaInvertidaDocumentos, stopWords, documentos, mediaDocumentos); //gera o ranking de similaridade para a consulta
+		}
+		
+//		int y=1;
+//		for (Similaridade s : consulta.getRetornados()) {
+//			gravarArq.printf(y + ") " +s.getDocumento() + " - " + s.getSim());
+//			gravarArq.printf("\n");
+//			y++;
+//		}
 		
 		Double MAP = Medidas.MAP(consulta); //Calcula o MAP de uma consulta
 		Double P10 = Medidas.precisaoN(consulta, 10); //Calcula a precição em N de uma consulta
 		
-		mediaMAP = mediaMAP + MAP;
-		mediaP = mediaP + P10;
+		if(tipo == 1) {
+			mediaMAPV = mediaMAPV + MAP;
+			mediaPV = mediaPV + P10;
+		}
+		else {
+			mediaMAPB = mediaMAPB + MAP;
+			mediaPB = mediaPB + P10;
+		}
 		
 		gravarArq.printf("\n" + consulta.getRetornados().size() + " documentos retornados\n"); 
 		gravarArq.printf("\nP@10 : " + P10); 
@@ -120,7 +152,10 @@ public class Main {
 		gravarArq.printf("\n\nConsulta " + consulta.getQueryNumber() + " realizada em " + tempoProcess + " segundos.");
 		gravarArq.printf("\n\n------------------------------------------\n\n");
 		
-		mediaTempo = mediaTempo + tempoProcess;
+		if(tipo == 1)
+			mediaTempoV = mediaTempoV + tempoProcess;
+		else
+			mediaTempoB = mediaTempoB + tempoProcess;
 	}
 	
 	static Double timeToSeconds(long a, long b){

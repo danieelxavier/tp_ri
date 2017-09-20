@@ -470,7 +470,7 @@ public class Extrator {
 			}	
 		}
 
-		calculaIDFBM25(hashTermos, documentos.size());
+		calculaIDF(hashTermos, documentos.size());
 		return hashTermos;
 		
 	}

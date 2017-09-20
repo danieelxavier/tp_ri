@@ -1,0 +1,2218 @@
+--------------------> RESULTADOS DAS CONSULTAS <--------------------
+
+
+CONSULTA 1
+
+503 documentos retornados
+
+P@10 : 0.5
+MAP : 0.31070360845218054
+
+Consulta 1 realizada em 0.042 segundos.
+
+------------------------------------------
+
+CONSULTA 2
+
+592 documentos retornados
+
+P@10 : 0.1
+MAP : 0.07289366359184124
+
+Consulta 2 realizada em 0.017 segundos.
+
+------------------------------------------
+
+CONSULTA 3
+
+663 documentos retornados
+
+P@10 : 0.2
+MAP : 0.19567422761564868
+
+Consulta 3 realizada em 0.013 segundos.
+
+------------------------------------------
+
+CONSULTA 4
+
+492 documentos retornados
+
+P@10 : 0.2
+MAP : 0.16093841646467563
+
+Consulta 4 realizada em 0.008 segundos.
+
+------------------------------------------
+
+CONSULTA 5
+
+462 documentos retornados
+
+P@10 : 0.8
+MAP : 0.32284452364099564
+
+Consulta 5 realizada em 0.017 segundos.
+
+------------------------------------------
+
+CONSULTA 6
+
+599 documentos retornados
+
+P@10 : 0.3
+MAP : 0.16967678844064382
+
+Consulta 6 realizada em 0.026 segundos.
+
+------------------------------------------
+
+CONSULTA 7
+
+723 documentos retornados
+
+P@10 : 0.2
+MAP : 0.12001558133457248
+
+Consulta 7 realizada em 0.008 segundos.
+
+------------------------------------------
+
+CONSULTA 8
+
+710 documentos retornados
+
+P@10 : 0.1
+MAP : 0.03634737805204809
+
+Consulta 8 realizada em 0.006 segundos.
+
+------------------------------------------
+
+CONSULTA 9
+
+729 documentos retornados
+
+P@10 : 0.1
+MAP : 0.127844010798786
+
+Consulta 9 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 10
+
+539 documentos retornados
+
+P@10 : 0.9
+MAP : 0.511155727533703
+
+Consulta 10 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 11
+
+228 documentos retornados
+
+P@10 : 0.6
+MAP : 0.5280165323428853
+
+Consulta 11 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 12
+
+577 documentos retornados
+
+P@10 : 0.2
+MAP : 0.2893407198330839
+
+Consulta 12 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 13
+
+564 documentos retornados
+
+P@10 : 0.6
+MAP : 0.22311683003431934
+
+Consulta 13 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 14
+
+640 documentos retornados
+
+P@10 : 0.4
+MAP : 0.16256055262447286
+
+Consulta 14 realizada em 0.007 segundos.
+
+------------------------------------------
+
+CONSULTA 15
+
+427 documentos retornados
+
+P@10 : 0.6
+MAP : 0.24981744171048056
+
+Consulta 15 realizada em 0.014 segundos.
+
+------------------------------------------
+
+CONSULTA 16
+
+777 documentos retornados
+
+P@10 : 0.8
+MAP : 0.2961266494654391
+
+Consulta 16 realizada em 0.035 segundos.
+
+------------------------------------------
+
+CONSULTA 17
+
+626 documentos retornados
+
+P@10 : 0.1
+MAP : 0.13579436099908365
+
+Consulta 17 realizada em 0.008 segundos.
+
+------------------------------------------
+
+CONSULTA 18
+
+456 documentos retornados
+
+P@10 : 0.1
+MAP : 0.20563427525668154
+
+Consulta 18 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 19
+
+647 documentos retornados
+
+P@10 : 0.3
+MAP : 0.14725900465457967
+
+Consulta 19 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 20
+
+623 documentos retornados
+
+P@10 : 0.8
+MAP : 0.5156749175666991
+
+Consulta 20 realizada em 0.006 segundos.
+
+------------------------------------------
+
+CONSULTA 21
+
+495 documentos retornados
+
+P@10 : 0.5
+MAP : 0.1619581607464317
+
+Consulta 21 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 22
+
+414 documentos retornados
+
+P@10 : 0.8
+MAP : 0.25316309299235684
+
+Consulta 22 realizada em 0.009 segundos.
+
+------------------------------------------
+
+CONSULTA 23
+
+664 documentos retornados
+
+P@10 : 0.2
+MAP : 0.07445478987014184
+
+Consulta 23 realizada em 0.006 segundos.
+
+------------------------------------------
+
+CONSULTA 24
+
+391 documentos retornados
+
+P@10 : 0.2
+MAP : 0.07027524092743581
+
+Consulta 24 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 25
+
+546 documentos retornados
+
+P@10 : 0.0
+MAP : 0.14414610607334596
+
+Consulta 25 realizada em 0.006 segundos.
+
+------------------------------------------
+
+CONSULTA 26
+
+410 documentos retornados
+
+P@10 : 0.9
+MAP : 0.4027959374975249
+
+Consulta 26 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 27
+
+564 documentos retornados
+
+P@10 : 0.2
+MAP : 0.21121311027260364
+
+Consulta 27 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 28
+
+428 documentos retornados
+
+P@10 : 0.5
+MAP : 0.18060466972307151
+
+Consulta 28 realizada em 0.007 segundos.
+
+------------------------------------------
+
+CONSULTA 29
+
+450 documentos retornados
+
+P@10 : 0.2
+MAP : 0.10259609640254932
+
+Consulta 29 realizada em 0.007 segundos.
+
+------------------------------------------
+
+CONSULTA 30
+
+790 documentos retornados
+
+P@10 : 0.6
+MAP : 0.33918813801412323
+
+Consulta 30 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 31
+
+498 documentos retornados
+
+P@10 : 0.7
+MAP : 0.29304016520698756
+
+Consulta 31 realizada em 0.009 segundos.
+
+------------------------------------------
+
+CONSULTA 32
+
+515 documentos retornados
+
+P@10 : 0.3
+MAP : 0.13927001281545368
+
+Consulta 32 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 33
+
+362 documentos retornados
+
+P@10 : 0.1
+MAP : 0.1309485240877056
+
+Consulta 33 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 34
+
+418 documentos retornados
+
+P@10 : 0.5
+MAP : 0.2581228826855994
+
+Consulta 34 realizada em 0.006 segundos.
+
+------------------------------------------
+
+CONSULTA 35
+
+859 documentos retornados
+
+P@10 : 0.0
+MAP : 0.061762852891348564
+
+Consulta 35 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 36
+
+509 documentos retornados
+
+P@10 : 0.3
+MAP : 0.17295860326865975
+
+Consulta 36 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 37
+
+687 documentos retornados
+
+P@10 : 0.5
+MAP : 0.3745238372017661
+
+Consulta 37 realizada em 0.008 segundos.
+
+------------------------------------------
+
+CONSULTA 38
+
+392 documentos retornados
+
+P@10 : 0.1
+MAP : 0.052179137221737615
+
+Consulta 38 realizada em 0.007 segundos.
+
+------------------------------------------
+
+CONSULTA 39
+
+431 documentos retornados
+
+P@10 : 0.2
+MAP : 0.3161457173702913
+
+Consulta 39 realizada em 0.022 segundos.
+
+------------------------------------------
+
+CONSULTA 40
+
+677 documentos retornados
+
+P@10 : 0.4
+MAP : 0.20860773507741381
+
+Consulta 40 realizada em 0.021 segundos.
+
+------------------------------------------
+
+CONSULTA 41
+
+658 documentos retornados
+
+P@10 : 0.5
+MAP : 0.40634162496236803
+
+Consulta 41 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 42
+
+508 documentos retornados
+
+P@10 : 1.0
+MAP : 0.27033875027611703
+
+Consulta 42 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 43
+
+540 documentos retornados
+
+P@10 : 0.4
+MAP : 0.3117114550824725
+
+Consulta 43 realizada em 0.008 segundos.
+
+------------------------------------------
+
+CONSULTA 44
+
+477 documentos retornados
+
+P@10 : 0.2
+MAP : 0.43855048963000137
+
+Consulta 44 realizada em 0.014 segundos.
+
+------------------------------------------
+
+CONSULTA 45
+
+449 documentos retornados
+
+P@10 : 0.6
+MAP : 0.3591125914589094
+
+Consulta 45 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 46
+
+512 documentos retornados
+
+P@10 : 0.4
+MAP : 0.25982313952196545
+
+Consulta 46 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 47
+
+746 documentos retornados
+
+P@10 : 0.2
+MAP : 0.10388186376875393
+
+Consulta 47 realizada em 0.006 segundos.
+
+------------------------------------------
+
+CONSULTA 48
+
+666 documentos retornados
+
+P@10 : 0.3
+MAP : 0.18526435634530636
+
+Consulta 48 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 49
+
+635 documentos retornados
+
+P@10 : 0.9
+MAP : 0.45475127344690514
+
+Consulta 49 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 50
+
+437 documentos retornados
+
+P@10 : 0.5
+MAP : 0.2539149688087393
+
+Consulta 50 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 51
+
+496 documentos retornados
+
+P@10 : 0.4
+MAP : 0.2727789762040373
+
+Consulta 51 realizada em 0.047 segundos.
+
+------------------------------------------
+
+CONSULTA 52
+
+369 documentos retornados
+
+P@10 : 0.1
+MAP : 0.5013140604467805
+
+Consulta 52 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 53
+
+464 documentos retornados
+
+P@10 : 0.4
+MAP : 0.24274043261621775
+
+Consulta 53 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 54
+
+736 documentos retornados
+
+P@10 : 1.0
+MAP : 0.44738357651094324
+
+Consulta 54 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 55
+
+433 documentos retornados
+
+P@10 : 0.0
+MAP : 0.03603625148340946
+
+Consulta 55 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 56
+
+593 documentos retornados
+
+P@10 : 0.2
+MAP : 0.10027719522546846
+
+Consulta 56 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 57
+
+491 documentos retornados
+
+P@10 : 0.6
+MAP : 0.3851169486900888
+
+Consulta 57 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 58
+
+585 documentos retornados
+
+P@10 : 0.4
+MAP : 0.3042462091666252
+
+Consulta 58 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 59
+
+583 documentos retornados
+
+P@10 : 0.5
+MAP : 0.14676028126876403
+
+Consulta 59 realizada em 0.019 segundos.
+
+------------------------------------------
+
+CONSULTA 60
+
+550 documentos retornados
+
+P@10 : 0.2
+MAP : 0.10596769761142534
+
+Consulta 60 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 61
+
+533 documentos retornados
+
+P@10 : 1.0
+MAP : 0.41068869131501357
+
+Consulta 61 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 62
+
+791 documentos retornados
+
+P@10 : 0.4
+MAP : 0.27395305799499714
+
+Consulta 62 realizada em 0.013 segundos.
+
+------------------------------------------
+
+CONSULTA 63
+
+433 documentos retornados
+
+P@10 : 0.1
+MAP : 0.08955726060598349
+
+Consulta 63 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 64
+
+626 documentos retornados
+
+P@10 : 0.0
+MAP : 0.07524463839717535
+
+Consulta 64 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 65
+
+592 documentos retornados
+
+P@10 : 0.2
+MAP : 0.20851016884416543
+
+Consulta 65 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 66
+
+709 documentos retornados
+
+P@10 : 0.5
+MAP : 0.1750486218816417
+
+Consulta 66 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 67
+
+172 documentos retornados
+
+P@10 : 0.2
+MAP : 0.20077841434032462
+
+Consulta 67 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 68
+
+428 documentos retornados
+
+P@10 : 0.1
+MAP : 0.06680251230228047
+
+Consulta 68 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 69
+
+388 documentos retornados
+
+P@10 : 0.7
+MAP : 0.4213476830515774
+
+Consulta 69 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 70
+
+514 documentos retornados
+
+P@10 : 0.7
+MAP : 0.4804814579260537
+
+Consulta 70 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 71
+
+118 documentos retornados
+
+P@10 : 0.3
+MAP : 0.458120612026862
+
+Consulta 71 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 72
+
+508 documentos retornados
+
+P@10 : 0.5
+MAP : 0.42638009011472405
+
+Consulta 72 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 73
+
+443 documentos retornados
+
+P@10 : 0.6
+MAP : 0.49759468406649354
+
+Consulta 73 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 74
+
+599 documentos retornados
+
+P@10 : 0.2
+MAP : 0.23440682840734064
+
+Consulta 74 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 75
+
+604 documentos retornados
+
+P@10 : 0.5
+MAP : 0.27714999815943586
+
+Consulta 75 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 76
+
+568 documentos retornados
+
+P@10 : 0.2
+MAP : 0.20250522083146466
+
+Consulta 76 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 77
+
+485 documentos retornados
+
+P@10 : 0.5
+MAP : 0.15181641573816684
+
+Consulta 77 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 78
+
+544 documentos retornados
+
+P@10 : 0.1
+MAP : 0.1530161380093937
+
+Consulta 78 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 79
+
+550 documentos retornados
+
+P@10 : 0.1
+MAP : 0.13614127485036082
+
+Consulta 79 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 80
+
+250 documentos retornados
+
+P@10 : 0.4
+MAP : 0.2056443323053837
+
+Consulta 80 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 81
+
+520 documentos retornados
+
+P@10 : 0.5
+MAP : 0.240585387408143
+
+Consulta 81 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 82
+
+784 documentos retornados
+
+P@10 : 0.6
+MAP : 0.21995895066326304
+
+Consulta 82 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 83
+
+741 documentos retornados
+
+P@10 : 0.3
+MAP : 0.19498150073432008
+
+Consulta 83 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 84
+
+475 documentos retornados
+
+P@10 : 0.6
+MAP : 0.4123597026844774
+
+Consulta 84 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 85
+
+533 documentos retornados
+
+P@10 : 0.1
+MAP : 0.0711720532320809
+
+Consulta 85 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 86
+
+787 documentos retornados
+
+P@10 : 0.6
+MAP : 0.32056577863293356
+
+Consulta 86 realizada em 0.005 segundos.
+
+------------------------------------------
+
+CONSULTA 87
+
+739 documentos retornados
+
+P@10 : 0.2
+MAP : 0.10099485924048776
+
+Consulta 87 realizada em 0.004 segundos.
+
+------------------------------------------
+
+CONSULTA 88
+
+760 documentos retornados
+
+P@10 : 0.3
+MAP : 0.21192503680412603
+
+Consulta 88 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 89
+
+501 documentos retornados
+
+P@10 : 0.4
+MAP : 0.35949599298994284
+
+Consulta 89 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 90
+
+517 documentos retornados
+
+P@10 : 0.8
+MAP : 0.5247268884416952
+
+Consulta 90 realizada em 0.006 segundos.
+
+------------------------------------------
+
+CONSULTA 91
+
+774 documentos retornados
+
+P@10 : 0.8
+MAP : 0.3156254731461731
+
+Consulta 91 realizada em 0.095 segundos.
+
+------------------------------------------
+
+CONSULTA 92
+
+405 documentos retornados
+
+P@10 : 0.8
+MAP : 0.3183314586320262
+
+Consulta 92 realizada em 0.008 segundos.
+
+------------------------------------------
+
+CONSULTA 93
+
+607 documentos retornados
+
+P@10 : 0.2
+MAP : 0.1251185403142174
+
+Consulta 93 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 94
+
+386 documentos retornados
+
+P@10 : 0.5
+MAP : 0.29273337040205144
+
+Consulta 94 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 95
+
+650 documentos retornados
+
+P@10 : 0.3
+MAP : 0.2982676641870472
+
+Consulta 95 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 96
+
+772 documentos retornados
+
+P@10 : 0.3
+MAP : 0.27429697609905646
+
+Consulta 96 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 97
+
+573 documentos retornados
+
+P@10 : 0.2
+MAP : 0.3073067184939787
+
+Consulta 97 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 98
+
+585 documentos retornados
+
+P@10 : 0.3
+MAP : 0.15563314157229421
+
+Consulta 98 realizada em 0.003 segundos.
+
+------------------------------------------
+
+CONSULTA 99
+
+422 documentos retornados
+
+P@10 : 0.3
+MAP : 0.6015576681831234
+
+Consulta 99 realizada em 0.001 segundos.
+
+------------------------------------------
+
+CONSULTA 100
+
+530 documentos retornados
+
+P@10 : 0.3
+MAP : 0.29804269395578764
+
+Consulta 100 realizada em 0.002 segundos.
+
+------------------------------------------
+
+CONSULTA 1
+
+500 documentos retornados
+
+P@10 : 0.4
+MAP : 0.2517293289238697
+
+Consulta 1 realizada em 0.158 segundos.
+
+------------------------------------------
+
+CONSULTA 2
+
+592 documentos retornados
+
+P@10 : 0.2
+MAP : 0.14348942399977593
+
+Consulta 2 realizada em 0.107 segundos.
+
+------------------------------------------
+
+CONSULTA 3
+
+652 documentos retornados
+
+P@10 : 0.4
+MAP : 0.18972628392762403
+
+Consulta 3 realizada em 0.034 segundos.
+
+------------------------------------------
+
+CONSULTA 4
+
+492 documentos retornados
+
+P@10 : 0.2
+MAP : 0.24348318484541392
+
+Consulta 4 realizada em 0.017 segundos.
+
+------------------------------------------
+
+CONSULTA 5
+
+462 documentos retornados
+
+P@10 : 0.9
+MAP : 0.28847382378922654
+
+Consulta 5 realizada em 0.021 segundos.
+
+------------------------------------------
+
+CONSULTA 6
+
+596 documentos retornados
+
+P@10 : 0.4
+MAP : 0.24998667402203759
+
+Consulta 6 realizada em 0.049 segundos.
+
+------------------------------------------
+
+CONSULTA 7
+
+714 documentos retornados
+
+P@10 : 0.3
+MAP : 0.14060057329061273
+
+Consulta 7 realizada em 0.033 segundos.
+
+------------------------------------------
+
+CONSULTA 8
+
+710 documentos retornados
+
+P@10 : 0.1
+MAP : 0.0710147699737064
+
+Consulta 8 realizada em 0.021 segundos.
+
+------------------------------------------
+
+CONSULTA 9
+
+277 documentos retornados
+
+P@10 : 0.1
+MAP : 0.13918331738461967
+
+Consulta 9 realizada em 0.031 segundos.
+
+------------------------------------------
+
+CONSULTA 10
+
+537 documentos retornados
+
+P@10 : 0.9
+MAP : 0.4866896039566672
+
+Consulta 10 realizada em 0.021 segundos.
+
+------------------------------------------
+
+CONSULTA 11
+
+228 documentos retornados
+
+P@10 : 0.9
+MAP : 0.6508415741754933
+
+Consulta 11 realizada em 0.017 segundos.
+
+------------------------------------------
+
+CONSULTA 12
+
+574 documentos retornados
+
+P@10 : 0.2
+MAP : 0.13826179202651956
+
+Consulta 12 realizada em 0.033 segundos.
+
+------------------------------------------
+
+CONSULTA 13
+
+563 documentos retornados
+
+P@10 : 0.4
+MAP : 0.2022352493767551
+
+Consulta 13 realizada em 0.021 segundos.
+
+------------------------------------------
+
+CONSULTA 14
+
+638 documentos retornados
+
+P@10 : 0.6
+MAP : 0.22056418355630597
+
+Consulta 14 realizada em 0.038 segundos.
+
+------------------------------------------
+
+CONSULTA 15
+
+427 documentos retornados
+
+P@10 : 0.8
+MAP : 0.26152072495618545
+
+Consulta 15 realizada em 0.024 segundos.
+
+------------------------------------------
+
+CONSULTA 16
+
+777 documentos retornados
+
+P@10 : 0.8
+MAP : 0.28298483760876836
+
+Consulta 16 realizada em 0.064 segundos.
+
+------------------------------------------
+
+CONSULTA 17
+
+624 documentos retornados
+
+P@10 : 0.4
+MAP : 0.2052231211795235
+
+Consulta 17 realizada em 0.03 segundos.
+
+------------------------------------------
+
+CONSULTA 18
+
+453 documentos retornados
+
+P@10 : 0.4
+MAP : 0.37211972914597
+
+Consulta 18 realizada em 0.025 segundos.
+
+------------------------------------------
+
+CONSULTA 19
+
+645 documentos retornados
+
+P@10 : 0.1
+MAP : 0.11122701717160544
+
+Consulta 19 realizada em 0.027 segundos.
+
+------------------------------------------
+
+CONSULTA 20
+
+621 documentos retornados
+
+P@10 : 1.0
+MAP : 0.6145403556028856
+
+Consulta 20 realizada em 0.029 segundos.
+
+------------------------------------------
+
+CONSULTA 21
+
+492 documentos retornados
+
+P@10 : 0.5
+MAP : 0.2607280186727065
+
+Consulta 21 realizada em 0.028 segundos.
+
+------------------------------------------
+
+CONSULTA 22
+
+414 documentos retornados
+
+P@10 : 0.7
+MAP : 0.24128924542803892
+
+Consulta 22 realizada em 0.016 segundos.
+
+------------------------------------------
+
+CONSULTA 23
+
+664 documentos retornados
+
+P@10 : 0.1
+MAP : 0.0729929129395268
+
+Consulta 23 realizada em 0.025 segundos.
+
+------------------------------------------
+
+CONSULTA 24
+
+391 documentos retornados
+
+P@10 : 0.0
+MAP : 0.026188618635378517
+
+Consulta 24 realizada em 0.119 segundos.
+
+------------------------------------------
+
+CONSULTA 25
+
+546 documentos retornados
+
+P@10 : 0.4
+MAP : 0.2043310235180955
+
+Consulta 25 realizada em 0.026 segundos.
+
+------------------------------------------
+
+CONSULTA 26
+
+410 documentos retornados
+
+P@10 : 0.9
+MAP : 0.3660659746100445
+
+Consulta 26 realizada em 0.013 segundos.
+
+------------------------------------------
+
+CONSULTA 27
+
+564 documentos retornados
+
+P@10 : 0.2
+MAP : 0.21103614323290074
+
+Consulta 27 realizada em 0.023 segundos.
+
+------------------------------------------
+
+CONSULTA 28
+
+428 documentos retornados
+
+P@10 : 0.5
+MAP : 0.19064636911421412
+
+Consulta 28 realizada em 0.019 segundos.
+
+------------------------------------------
+
+CONSULTA 29
+
+450 documentos retornados
+
+P@10 : 0.3
+MAP : 0.1127976901575054
+
+Consulta 29 realizada em 0.021 segundos.
+
+------------------------------------------
+
+CONSULTA 30
+
+790 documentos retornados
+
+P@10 : 0.6
+MAP : 0.39781448149211673
+
+Consulta 30 realizada em 0.028 segundos.
+
+------------------------------------------
+
+CONSULTA 31
+
+495 documentos retornados
+
+P@10 : 0.8
+MAP : 0.2814915348938969
+
+Consulta 31 realizada em 0.034 segundos.
+
+------------------------------------------
+
+CONSULTA 32
+
+514 documentos retornados
+
+P@10 : 0.3
+MAP : 0.1432927639689569
+
+Consulta 32 realizada em 0.027 segundos.
+
+------------------------------------------
+
+CONSULTA 33
+
+362 documentos retornados
+
+P@10 : 0.9
+MAP : 0.4523787006708443
+
+Consulta 33 realizada em 0.034 segundos.
+
+------------------------------------------
+
+CONSULTA 34
+
+418 documentos retornados
+
+P@10 : 0.6
+MAP : 0.38072483879924257
+
+Consulta 34 realizada em 0.061 segundos.
+
+------------------------------------------
+
+CONSULTA 35
+
+859 documentos retornados
+
+P@10 : 0.5
+MAP : 0.25865107950610217
+
+Consulta 35 realizada em 0.025 segundos.
+
+------------------------------------------
+
+CONSULTA 36
+
+506 documentos retornados
+
+P@10 : 0.3
+MAP : 0.19439737704736745
+
+Consulta 36 realizada em 0.017 segundos.
+
+------------------------------------------
+
+CONSULTA 37
+
+687 documentos retornados
+
+P@10 : 1.0
+MAP : 0.5209284469859117
+
+Consulta 37 realizada em 0.034 segundos.
+
+------------------------------------------
+
+CONSULTA 38
+
+392 documentos retornados
+
+P@10 : 0.1
+MAP : 0.05401793494320261
+
+Consulta 38 realizada em 0.012 segundos.
+
+------------------------------------------
+
+CONSULTA 39
+
+431 documentos retornados
+
+P@10 : 0.3
+MAP : 0.3337597122780078
+
+Consulta 39 realizada em 0.023 segundos.
+
+------------------------------------------
+
+CONSULTA 40
+
+677 documentos retornados
+
+P@10 : 0.3
+MAP : 0.22180088851161492
+
+Consulta 40 realizada em 0.036 segundos.
+
+------------------------------------------
+
+CONSULTA 41
+
+647 documentos retornados
+
+P@10 : 0.4
+MAP : 0.3557159534674172
+
+Consulta 41 realizada em 0.024 segundos.
+
+------------------------------------------
+
+CONSULTA 42
+
+505 documentos retornados
+
+P@10 : 0.7
+MAP : 0.21403038129118418
+
+Consulta 42 realizada em 0.028 segundos.
+
+------------------------------------------
+
+CONSULTA 43
+
+540 documentos retornados
+
+P@10 : 0.6
+MAP : 0.37959007278118706
+
+Consulta 43 realizada em 0.031 segundos.
+
+------------------------------------------
+
+CONSULTA 44
+
+476 documentos retornados
+
+P@10 : 0.8
+MAP : 0.5518443619974832
+
+Consulta 44 realizada em 0.028 segundos.
+
+------------------------------------------
+
+CONSULTA 45
+
+446 documentos retornados
+
+P@10 : 0.4
+MAP : 0.21249660972454493
+
+Consulta 45 realizada em 0.026 segundos.
+
+------------------------------------------
+
+CONSULTA 46
+
+509 documentos retornados
+
+P@10 : 0.4
+MAP : 0.27121330534989213
+
+Consulta 46 realizada em 0.027 segundos.
+
+------------------------------------------
+
+CONSULTA 47
+
+739 documentos retornados
+
+P@10 : 0.2
+MAP : 0.07923084302326815
+
+Consulta 47 realizada em 0.03 segundos.
+
+------------------------------------------
+
+CONSULTA 48
+
+226 documentos retornados
+
+P@10 : 0.3
+MAP : 0.253331351183116
+
+Consulta 48 realizada em 0.037 segundos.
+
+------------------------------------------
+
+CONSULTA 49
+
+621 documentos retornados
+
+P@10 : 0.9
+MAP : 0.4464787110433323
+
+Consulta 49 realizada em 0.03 segundos.
+
+------------------------------------------
+
+CONSULTA 50
+
+434 documentos retornados
+
+P@10 : 0.6
+MAP : 0.26345742298030417
+
+Consulta 50 realizada em 0.022 segundos.
+
+------------------------------------------
+
+CONSULTA 51
+
+110 documentos retornados
+
+P@10 : 0.6
+MAP : 0.2397618307875114
+
+Consulta 51 realizada em 0.104 segundos.
+
+------------------------------------------
+
+CONSULTA 52
+
+366 documentos retornados
+
+P@10 : 0.1
+MAP : 0.5011210762331838
+
+Consulta 52 realizada em 0.013 segundos.
+
+------------------------------------------
+
+CONSULTA 53
+
+463 documentos retornados
+
+P@10 : 0.2
+MAP : 0.21571507387866945
+
+Consulta 53 realizada em 0.022 segundos.
+
+------------------------------------------
+
+CONSULTA 54
+
+713 documentos retornados
+
+P@10 : 0.9
+MAP : 0.4205538974229225
+
+Consulta 54 realizada em 0.029 segundos.
+
+------------------------------------------
+
+CONSULTA 55
+
+431 documentos retornados
+
+P@10 : 0.0
+MAP : 0.02725896014005
+
+Consulta 55 realizada em 0.027 segundos.
+
+------------------------------------------
+
+CONSULTA 56
+
+591 documentos retornados
+
+P@10 : 0.3
+MAP : 0.0965104906991117
+
+Consulta 56 realizada em 0.028 segundos.
+
+------------------------------------------
+
+CONSULTA 57
+
+489 documentos retornados
+
+P@10 : 0.7
+MAP : 0.49992828279477364
+
+Consulta 57 realizada em 0.037 segundos.
+
+------------------------------------------
+
+CONSULTA 58
+
+583 documentos retornados
+
+P@10 : 0.4
+MAP : 0.3092578960537
+
+Consulta 58 realizada em 0.025 segundos.
+
+------------------------------------------
+
+CONSULTA 59
+
+582 documentos retornados
+
+P@10 : 0.3
+MAP : 0.1352339469091337
+
+Consulta 59 realizada em 0.036 segundos.
+
+------------------------------------------
+
+CONSULTA 60
+
+550 documentos retornados
+
+P@10 : 0.3
+MAP : 0.11440339912293072
+
+Consulta 60 realizada em 0.014 segundos.
+
+------------------------------------------
+
+CONSULTA 61
+
+256 documentos retornados
+
+P@10 : 0.9
+MAP : 0.33538322335566123
+
+Consulta 61 realizada em 0.038 segundos.
+
+------------------------------------------
+
+CONSULTA 62
+
+773 documentos retornados
+
+P@10 : 0.5
+MAP : 0.25804581086859324
+
+Consulta 62 realizada em 0.049 segundos.
+
+------------------------------------------
+
+CONSULTA 63
+
+430 documentos retornados
+
+P@10 : 0.1
+MAP : 0.07048093118487582
+
+Consulta 63 realizada em 0.024 segundos.
+
+------------------------------------------
+
+CONSULTA 64
+
+346 documentos retornados
+
+P@10 : 0.2
+MAP : 0.10330215667376498
+
+Consulta 64 realizada em 0.052 segundos.
+
+------------------------------------------
+
+CONSULTA 65
+
+590 documentos retornados
+
+P@10 : 0.6
+MAP : 0.2526341957572129
+
+Consulta 65 realizada em 0.023 segundos.
+
+------------------------------------------
+
+CONSULTA 66
+
+685 documentos retornados
+
+P@10 : 0.4
+MAP : 0.17823831274009372
+
+Consulta 66 realizada em 0.024 segundos.
+
+------------------------------------------
+
+CONSULTA 67
+
+172 documentos retornados
+
+P@10 : 0.5
+MAP : 0.3555188814031446
+
+Consulta 67 realizada em 0.019 segundos.
+
+------------------------------------------
+
+CONSULTA 68
+
+425 documentos retornados
+
+P@10 : 0.1
+MAP : 0.052048220786653124
+
+Consulta 68 realizada em 0.019 segundos.
+
+------------------------------------------
+
+CONSULTA 69
+
+385 documentos retornados
+
+P@10 : 0.5
+MAP : 0.36553586571699703
+
+Consulta 69 realizada em 0.015 segundos.
+
+------------------------------------------
+
+CONSULTA 70
+
+513 documentos retornados
+
+P@10 : 0.5
+MAP : 0.3945532349824241
+
+Consulta 70 realizada em 0.016 segundos.
+
+------------------------------------------
+
+CONSULTA 71
+
+24 documentos retornados
+
+P@10 : 0.2
+MAP : 0.35964720226669855
+
+Consulta 71 realizada em 0.022 segundos.
+
+------------------------------------------
+
+CONSULTA 72
+
+506 documentos retornados
+
+P@10 : 0.6
+MAP : 0.4317079243135583
+
+Consulta 72 realizada em 0.016 segundos.
+
+------------------------------------------
+
+CONSULTA 73
+
+440 documentos retornados
+
+P@10 : 0.6
+MAP : 0.4403124642244118
+
+Consulta 73 realizada em 0.017 segundos.
+
+------------------------------------------
+
+CONSULTA 74
+
+599 documentos retornados
+
+P@10 : 0.3
+MAP : 0.3441815650695278
+
+Consulta 74 realizada em 0.024 segundos.
+
+------------------------------------------
+
+CONSULTA 75
+
+602 documentos retornados
+
+P@10 : 0.6
+MAP : 0.3789953398309044
+
+Consulta 75 realizada em 0.024 segundos.
+
+------------------------------------------
+
+CONSULTA 76
+
+567 documentos retornados
+
+P@10 : 0.4
+MAP : 0.23709738260026725
+
+Consulta 76 realizada em 0.025 segundos.
+
+------------------------------------------
+
+CONSULTA 77
+
+483 documentos retornados
+
+P@10 : 0.2
+MAP : 0.12646351265565242
+
+Consulta 77 realizada em 0.028 segundos.
+
+------------------------------------------
+
+CONSULTA 78
+
+542 documentos retornados
+
+P@10 : 0.0
+MAP : 0.1828194669559504
+
+Consulta 78 realizada em 0.03 segundos.
+
+------------------------------------------
+
+CONSULTA 79
+
+548 documentos retornados
+
+P@10 : 0.3
+MAP : 0.16998198046184823
+
+Consulta 79 realizada em 0.026 segundos.
+
+------------------------------------------
+
+CONSULTA 80
+
+250 documentos retornados
+
+P@10 : 0.4
+MAP : 0.19222076170888608
+
+Consulta 80 realizada em 0.019 segundos.
+
+------------------------------------------
+
+CONSULTA 81
+
+518 documentos retornados
+
+P@10 : 0.4
+MAP : 0.23254527731545852
+
+Consulta 81 realizada em 0.022 segundos.
+
+------------------------------------------
+
+CONSULTA 82
+
+766 documentos retornados
+
+P@10 : 0.6
+MAP : 0.20491557007000072
+
+Consulta 82 realizada em 0.028 segundos.
+
+------------------------------------------
+
+CONSULTA 83
+
+720 documentos retornados
+
+P@10 : 0.4
+MAP : 0.21653974081689106
+
+Consulta 83 realizada em 0.034 segundos.
+
+------------------------------------------
+
+CONSULTA 84
+
+473 documentos retornados
+
+P@10 : 0.6
+MAP : 0.3998578643528798
+
+Consulta 84 realizada em 0.023 segundos.
+
+------------------------------------------
+
+CONSULTA 85
+
+533 documentos retornados
+
+P@10 : 0.0
+MAP : 0.05588311466073755
+
+Consulta 85 realizada em 0.02 segundos.
+
+------------------------------------------
+
+CONSULTA 86
+
+773 documentos retornados
+
+P@10 : 0.5
+MAP : 0.25576969957861634
+
+Consulta 86 realizada em 0.052 segundos.
+
+------------------------------------------
+
+CONSULTA 87
+
+716 documentos retornados
+
+P@10 : 0.2
+MAP : 0.07729243994715483
+
+Consulta 87 realizada em 0.027 segundos.
+
+------------------------------------------
+
+CONSULTA 88
+
+741 documentos retornados
+
+P@10 : 0.3
+MAP : 0.2074974974275778
+
+Consulta 88 realizada em 0.025 segundos.
+
+------------------------------------------
+
+CONSULTA 89
+
+499 documentos retornados
+
+P@10 : 0.6
+MAP : 0.4608299271553853
+
+Consulta 89 realizada em 0.026 segundos.
+
+------------------------------------------
+
+CONSULTA 90
+
+515 documentos retornados
+
+P@10 : 0.9
+MAP : 0.6383984177063208
+
+Consulta 90 realizada em 0.03 segundos.
+
+------------------------------------------
+
+CONSULTA 91
+
+774 documentos retornados
+
+P@10 : 0.5
+MAP : 0.29876020912363166
+
+Consulta 91 realizada em 0.089 segundos.
+
+------------------------------------------
+
+CONSULTA 92
+
+403 documentos retornados
+
+P@10 : 0.8
+MAP : 0.3210077190328423
+
+Consulta 92 realizada em 0.024 segundos.
+
+------------------------------------------
+
+CONSULTA 93
+
+593 documentos retornados
+
+P@10 : 0.2
+MAP : 0.1258634219956446
+
+Consulta 93 realizada em 0.015 segundos.
+
+------------------------------------------
+
+CONSULTA 94
+
+386 documentos retornados
+
+P@10 : 0.4
+MAP : 0.2625423014676801
+
+Consulta 94 realizada em 0.012 segundos.
+
+------------------------------------------
+
+CONSULTA 95
+
+649 documentos retornados
+
+P@10 : 0.3
+MAP : 0.3432333054970945
+
+Consulta 95 realizada em 0.028 segundos.
+
+------------------------------------------
+
+CONSULTA 96
+
+747 documentos retornados
+
+P@10 : 0.3
+MAP : 0.2924984737125959
+
+Consulta 96 realizada em 0.031 segundos.
+
+------------------------------------------
+
+CONSULTA 97
+
+571 documentos retornados
+
+P@10 : 0.5
+MAP : 0.3222821044960042
+
+Consulta 97 realizada em 0.032 segundos.
+
+------------------------------------------
+
+CONSULTA 98
+
+585 documentos retornados
+
+P@10 : 0.3
+MAP : 0.1637909834737638
+
+Consulta 98 realizada em 0.023 segundos.
+
+------------------------------------------
+
+CONSULTA 99
+
+419 documentos retornados
+
+P@10 : 0.3
+MAP : 0.6016912829217153
+
+Consulta 99 realizada em 0.014 segundos.
+
+------------------------------------------
+
+CONSULTA 100
+
+528 documentos retornados
+
+P@10 : 0.3
+MAP : 0.29215036225462243
+
+Consulta 100 realizada em 0.022 segundos.
+
+------------------------------------------
+
+
+		 Media MAP Vetorial:	0.2510457012027072
+		 Media P@10 Vetorial:	0.39599999999999974
+		 Consultas processadas em: 0,734 segundos
+		 Media Tempo por consulta: 0,007 segundos
+
+ ------------------------------------------------------------------
+
+		 Media MAP BM25:	0.267788813377667
+		 Media P@10 BM25:	0.4419999999999999
+		 Consultas processadas em: 3,126 segundos
+		 Media Tempo por consulta: 0,031 segundos
+
+		 Processo finalizado em 8.55 segundos.
+
