@@ -29,7 +29,8 @@ public class Main {
 		
 		tempoInicial = System.currentTimeMillis();
 		
-		String arg = args[0];
+//		String arg = args[0];
+		String arg = "cfc";
 		
 		if(!arg.endsWith("/"))
 			arg = arg + "/";
@@ -46,8 +47,15 @@ public class Main {
 			tempoAtual = System.currentTimeMillis();
 			System.out.println("Extração Finalizada em " + timeToSeconds(tempoAtual, tempoInicial) + " segundos.");
 			
+			int tamTotal = 0;
+			for(Documento d : documentos) {
+				tamTotal += d.getTamanho();
+			}
+			Double mediaDocumentos = (double) (tamTotal / documentos.size());
+			
 			arq = new FileWriter("resultados.txt");
 			gravarArq = new PrintWriter(arq);
+			
 			
 			gravarArq.printf("--------------------> RESULTADOS DAS CONSULTAS <--------------------\n\n\n");
 			
@@ -56,7 +64,7 @@ public class Main {
 			mediaTempo = 0.0;
 			//executa as consultas
 			for (Consulta c : consultas) {
-				processa(c);
+				processa(c, mediaDocumentos);
 			}
 			
 			
@@ -79,7 +87,7 @@ public class Main {
 	}
 	
 	
-	static void processa(Consulta consulta){
+	static void processa(Consulta consulta, Double mediaDocumentos){
 		
 		long tempo = System.currentTimeMillis();
 		
@@ -87,7 +95,7 @@ public class Main {
 		gravarArq.printf("CONSULTA " + consulta.getQueryNumber());
 		gravarArq.printf("\n");
 		
-		consulta.processaConsulta(listaInvertidaDocumentos, stopWords); //gera o ranking de similaridade para a consulta
+		consulta.processaConsulta(listaInvertidaDocumentos, stopWords, documentos, mediaDocumentos); //gera o ranking de similaridade para a consulta
 		
 		int y=1;
 		for (Similaridade s : consulta.getRetornados()) {

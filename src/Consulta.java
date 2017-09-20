@@ -12,6 +12,10 @@ public class Consulta {
 	private int NR;
 	private ArrayList<AvaliacaoConsulta> avaliacoes;
 	ArrayList<Double> vetorQuery;
+	ArrayList<Double> vetorQueryIdf;
+	ArrayList<Double> vetorQueryFreq;
+	ArrayList<Documento> documentos;
+	private Double mediaDocumentos;
 	
 	private static HashMap<String, TermoConsultas> hashTermosConsulta;		
 	private static ArrayList<ArrayList<Double>> vetoresDocumentos;
@@ -69,11 +73,15 @@ public class Consulta {
 
 	
 	//Método que faz o processamento das consultas gerando o ranking de similaridade
-	public void processaConsulta(HashMap<String, TermoDocumentos> hashTermosDocumentos, ArrayList<String> stopWords){
+	public void processaConsulta(HashMap<String, TermoDocumentos> hashTermosDocumentos, ArrayList<String> stopWords, ArrayList<Documento> docs, Double md){
 	
 		Extrator.getTFConsulta(this, stopWords); //extrai os termos da consulta
 		vetorQuery = new ArrayList<>();
+		vetorQueryIdf = new ArrayList<>();
+		vetorQueryFreq = new ArrayList<>();
 		vetoresDocumentos = new ArrayList<>();
+		mediaDocumentos = md;
+		documentos = docs;
 		
 		Iterator it = hashTermosConsulta.entrySet().iterator();
 		
@@ -126,10 +134,13 @@ public class Consulta {
 	        }
 	        
 	        vetorQuery.add(t.getIDFDocumentos() * t.getFrequencia().getFrequencia());
+	        	vetorQueryIdf.add(t.getIDFDocumentos());
+	        	vetorQueryFreq.add((double) t.getFrequencia().getFrequencia());
 	        
 	    }
 	    
-	    calcularSimilaridades(); //calcula a similaridade
+//	    calcularSimilaridades(); //calcula a similaridade
+	    calcularSimilaridadesBM25(); //calcula a similaridade
 	    
 	    retornados = new ArrayList<>();
 	    
@@ -190,6 +201,58 @@ public class Consulta {
 		}));
 		
 	}
+	
+	//Método que calcula a similaridade entre a consulta e os documentos
+		public void calcularSimilaridadesBM25(){
+			
+			similaridades = new ArrayList<>();
+			
+
+			int j = 1;
+			for (Documento v : documentos) {
+				
+				Double Fqd = 0.0;
+				Double k1 = 1.0;
+				Double b = 0.75;
+				Double tamD = (double) v.getTamanho();
+				
+				Double score = 0.0;
+				
+				for(int i = 0; i < vetorQueryFreq.size(); i++){
+					
+					Fqd = (double) vetorQueryFreq.get(i);
+					
+					Double A = Fqd * (k1+1);
+					Double B = 1 - b + (b * (tamD / mediaDocumentos));
+					
+					score += vetorQueryIdf.get(i) * (A / Fqd + (k1 * B));
+					
+				}
+				
+				
+				Similaridade s = new Similaridade();
+				
+				if(score.isNaN())
+					s.setSim(0.0);
+				else
+					s.setSim(score);
+				s.setDocumento(j);
+				similaridades.add(s);
+				
+				j++;
+			}	
+
+			//ordena os valores de similaridade
+			Collections.sort(similaridades, Collections.reverseOrder(new Comparator<Similaridade>() {
+
+				@Override
+				public int compare(Similaridade o1, Similaridade o2) {
+					// TODO Auto-generated method stub
+					return o1.getSim().compareTo(o2.getSim());
+				}
+			}));
+			
+		}
 		
 }
 

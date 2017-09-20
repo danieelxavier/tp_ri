@@ -386,7 +386,7 @@ public class Extrator {
 			for (int i = 0; i < parts.length; i++) {
 				
 				if(!parts[i].equals("") && !isStopWord(parts[i], stopWords)){
-					
+					d.incrementaTamanho();
 					if (hashTermos.get(parts[i]) == null){
 						
 						TermoDocumentos t = new TermoDocumentos();
@@ -406,40 +406,40 @@ public class Extrator {
 			}
 			
 			
-		// PEGA OS TERMOS DAS PALAVRAS CHAVE---------------------------
-			
-			ArrayList<String> auxMJ = d.getMajorSubjects();
-			
-			if(auxMJ != null){
-				for (String string : auxMJ) {
-					
-					parts = string.split("[\\W]");
-					
-
-					for (int i = 0; i < parts.length; i++) {
-						
-						if(!parts[i].equals("") && !isStopWord(parts[i], stopWords)){
-							
-							if (hashTermos.get(parts[i]) == null){
-								
-								TermoDocumentos t = new TermoDocumentos();
-								ArrayList<Frequencia> af = iniciaFrequenciasDocumentos(documentos);
-								t.setFrequenciasDocumentos(af);
-								t.setTermo(parts[i]);
-								
-								hashTermos.put(parts[i], t);
-								hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
-							}
-							else if(hashTermos.get(parts[i]) != null){
-								hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
-							}
-							
-						}
-					
-					}
-				}
-			}
-						
+//		// PEGA OS TERMOS DAS PALAVRAS CHAVE---------------------------
+//			
+//			ArrayList<String> auxMJ = d.getMajorSubjects();
+//			
+//			if(auxMJ != null){
+//				for (String string : auxMJ) {
+//					
+//					parts = string.split("[\\W]");
+//					
+//
+//					for (int i = 0; i < parts.length; i++) {
+//						
+//						if(!parts[i].equals("") && !isStopWord(parts[i], stopWords)){
+//							
+//							if (hashTermos.get(parts[i]) == null){
+//								
+//								TermoDocumentos t = new TermoDocumentos();
+//								ArrayList<Frequencia> af = iniciaFrequenciasDocumentos(documentos);
+//								t.setFrequenciasDocumentos(af);
+//								t.setTermo(parts[i]);
+//								
+//								hashTermos.put(parts[i], t);
+//								hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
+//							}
+//							else if(hashTermos.get(parts[i]) != null){
+//								hashTermos.get(parts[i]).getFrequenciasDocumentos().get(d.getRecordNumber()-1).incrementaFrequencia();
+//							}
+//							
+//						}
+//					
+//					}
+//				}
+//			}
+//						
 			
 		// PEGA OS TERMOS DO ABSTRACT---------------------------
 			aux = d.getAbstract();
@@ -452,7 +452,7 @@ public class Extrator {
 			for (int i = 0; i < parts.length; i++) {
 				
 				if(!parts[i].equals("") && !isStopWord(parts[i], stopWords)){
-					
+					d.incrementaTamanho();
 					if (hashTermos.get(parts[i]) == null){
 						
 						TermoDocumentos t = new TermoDocumentos();
@@ -470,7 +470,7 @@ public class Extrator {
 			}	
 		}
 
-		calculaIDF(hashTermos, documentos.size());
+		calculaIDFBM25(hashTermos, documentos.size());
 		return hashTermos;
 		
 	}
@@ -552,6 +552,25 @@ public class Extrator {
 	    }
 		
 	}
+	
+	//método que calcula o IDF para os termos
+		private static void calculaIDFBM25(HashMap<String, TermoDocumentos> hashFrequencias, int numero_de_documentos){
+			
+			Iterator it = hashFrequencias.entrySet().iterator();
+		    while (it.hasNext()) {
+		        HashMap.Entry pairs = (HashMap.Entry)it.next();
+	   
+		        TermoDocumentos t = (TermoDocumentos) pairs.getValue();
+		        
+		        ArrayList<Frequencia> fr = t.getFrequenciasDocumentos();
+		        	        
+		        Double idf = Math.log10((numero_de_documentos - size(fr) + 0.5) / size(fr) );
+		        
+		        t.setIDFDocumentos(idf);
+
+		    }
+			
+		}
 	
 	public static int size(ArrayList<Frequencia> arrayFrequencias){
 		int c = 0;

@@ -4,6 +4,7 @@ public class Similaridade{
 	private Double sim;
 	private int documento;
 	
+
 	public Double getSim() {
 		return sim;
 	}

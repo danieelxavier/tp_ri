@@ -15,6 +15,7 @@ public class Documento {
 	private String Abstract;
 	private ArrayList<String> references;
 	private ArrayList<String> citations;
+	private int tamanho;
 	
 	public String getPaperNumber() {
 		return paperNumber;
@@ -87,6 +88,15 @@ public class Documento {
 	}
 	public void setYear(int year) {
 		this.year = year;
+	}
+	public int getTamanho() {
+		return tamanho;
+	}
+	public void setTamanho(int tamanho) {
+		this.tamanho = tamanho;
+	}
+	public void incrementaTamanho() {
+		this.tamanho++;
 	}
 	
 }
